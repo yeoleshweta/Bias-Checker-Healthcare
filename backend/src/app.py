@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import os
 import sys
 
@@ -8,6 +9,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 from predict import predict_bias
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all origins
 
 @app.route('/health', methods=['GET'])
 def health():

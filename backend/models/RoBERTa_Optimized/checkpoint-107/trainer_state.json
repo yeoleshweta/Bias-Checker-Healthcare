@@ -1,0 +1,58 @@
+{
+  "best_global_step": 107,
+  "best_metric": 0.1,
+  "best_model_checkpoint": "/content/drive/MyDrive/ABIM_Bias_Checker_Results/RoBERTa_Optimized/checkpoint-107",
+  "epoch": 1.0,
+  "eval_steps": 500,
+  "global_step": 107,
+  "is_hyper_param_search": false,
+  "is_local_process_zero": true,
+  "is_world_process_zero": true,
+  "log_history": [
+    {
+      "epoch": 0.4672897196261682,
+      "grad_norm": 2.202664613723755,
+      "learning_rate": 5.051546391752578e-06,
+      "loss": 1.3943,
+      "step": 50
+    },
+    {
+      "epoch": 0.9345794392523364,
+      "grad_norm": 2.078674077987671,
+      "learning_rate": 9.963302752293578e-06,
+      "loss": 1.3832,
+      "step": 100
+    },
+    {
+      "epoch": 1.0,
+      "eval_accuracy": 0.25,
+      "eval_f1": 0.1,
+      "eval_loss": 1.3794746398925781,
+      "eval_runtime": 2.4296,
+      "eval_samples_per_second": 123.476,
+      "eval_steps_per_second": 15.64,
+      "step": 107
+    }
+  ],
+  "logging_steps": 50,
+  "max_steps": 642,
+  "num_input_tokens_seen": 0,
+  "num_train_epochs": 6,
+  "save_steps": 500,
+  "stateful_callbacks": {
+    "TrainerControl": {
+      "args": {
+        "should_epoch_stop": false,
+        "should_evaluate": false,
+        "should_log": false,
+        "should_save": true,
+        "should_training_stop": false
+      },
+      "attributes": {}
+    }
+  },
+  "total_flos": 231992720265216.0,
+  "train_batch_size": 16,
+  "trial_name": null,
+  "trial_params": null
+}

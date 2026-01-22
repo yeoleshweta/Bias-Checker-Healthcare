@@ -5,7 +5,9 @@ from peft import PeftModel
 
 # 1. SETUP PATHS
 # Adjust this path to where your trained model is saved in your deployment environment
-MODEL_PATH = os.environ.get("MODEL_PATH", "/app/ABIM_Bias_Checker_Results/RoBERTa_Optimized")
+SCRIPT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DEFAULT_MODEL_PATH = os.path.join(SCRIPT_DIR, "models", "RoBERTa_Optimized")
+MODEL_PATH = os.environ.get("MODEL_PATH", DEFAULT_MODEL_PATH)
 
 # Verify the file exists before trying to load
 if not os.path.exists(os.path.join(MODEL_PATH, "adapter_config.json")):
