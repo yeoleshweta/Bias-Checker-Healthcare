@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.venv/
+.env
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Notebooks
+notebook/
+*.ipynb
+
+# Git
+.git/
+.gitignore
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Documentation
+*.md
+!README.md
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Training data (not needed for inference)
+data/
+
+# Scripts
+run.sh
+run.bat
+
+# Fly.io
+fly.toml

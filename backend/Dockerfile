@@ -1,18 +1,30 @@
 FROM python:3.9-slim
 
-# Set the working directory in the container
+# Set the working directory
 WORKDIR /app
 
-# Copy the requirements file and install dependencies
-COPY requirements.txt .
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements and install Python dependencies
+COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application code
-COPY src/ src/
+COPY backend/src/ src/
 
-# Expose the port your Flask/FastAPI app will run on (e.g., 8000 for FastAPI, 5000 for Flask)
+# Copy the trained model
+COPY backend/models/ models/
+
+# Set environment variables
+ENV MODEL_PATH=/app/models/RoBERTa_Optimized
+ENV FLASK_ENV=production
+ENV PYTHONUNBUFFERED=1
+
+# Expose the port
 EXPOSE 8000
 
-# Command to run the application (will be updated when app.py is created)
-# For now, we'll keep it simple
-CMD ["echo", "'Container is ready. Run app.py with a web server.'"]
+# Run the Flask application
+CMD ["python", "src/app.py"]
