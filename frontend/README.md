@@ -4,7 +4,8 @@ Modern Next.js frontend for the ABIM Bias Checker application. Detects and analy
 
 ## Features
 
-- **7 Bias Categories**: Demographic, Clinical Stigma, Assessment, Algorithmic, Documentation, Structural, and No Bias
+- **4 Bias Categories**: Demographic Bias, Clinical Stigma Bias, Assessment Bias, and No Bias
+- **High Accuracy**: RoBERTa + LoRA model achieving 98.7% accuracy on test set
 - **Real-time Analysis**: Instant bias detection with AI-powered explanations
 - **Explainable AI**: View rationale, flagged phrases, and recommended revisions
 - **Premium UI**: Modern design with Tailwind CSS, smooth animations, and responsive layout
@@ -105,7 +106,7 @@ frontend/
 
 ### Understanding Bias Categories
 
-Visit the **Taxonomy Guide** page to learn about all 7 bias categories, with examples and impact assessments.
+Visit the **Taxonomy Guide** page to learn about all 4 bias categories, with examples and impact assessments.
 
 ### Viewing Model Performance
 

@@ -101,8 +101,10 @@ export default function TaxonomyPage() {
             </h1>
           </div>
           <p className="text-gray-600">
-            Understanding the seven bias categories detected by BiasGuard, with
-            examples and impact assessments.
+            Understanding the bias categories in clinical documentation. While
+            the model classifies into 4 categories (No Bias, Demographic,
+            Clinical Stigma, Assessment), this guide covers extended bias types
+            for educational purposes.
           </p>
         </div>
 
