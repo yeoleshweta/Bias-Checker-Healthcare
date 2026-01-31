@@ -1,3 +1,4 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
 transformers>=4.30.0
 datasets
 accelerate
