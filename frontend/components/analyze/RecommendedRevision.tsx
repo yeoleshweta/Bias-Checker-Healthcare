@@ -31,13 +31,13 @@ export default function RecommendedRevision({
         <CheckCircle className="w-4 h-4 mr-2 text-success" />
         Diagnostic Revision
       </h3>
-      <div className="bg-success-light/30 border border-success/10 rounded-2xl p-8">
+      <div className="bg-success-light/30 dark:bg-success/10 border border-success/10 rounded-2xl p-8">
         <div className="flex items-start mb-8 font-sans">
           <div className="flex-shrink-0 w-10 h-10 bg-success rounded-xl flex items-center justify-center shadow-lg shadow-success/20">
             <CheckCircle className="w-6 h-6 text-white" />
           </div>
           <div className="ml-6 flex-1">
-            <p className="text-lg text-neutral-800 leading-[1.8] font-medium">
+            <p className="text-lg text-neutral-800 dark:text-neutral-200 leading-[1.8] font-medium">
               {revision}
             </p>
           </div>
@@ -56,7 +56,7 @@ export default function RecommendedRevision({
             variant="outline"
             size="md"
             onClick={handleExportReport}
-            className="flex items-center border-neutral-200 text-neutral-600 bg-white"
+            className="flex items-center border-neutral-200 dark:border-neutral-700 text-neutral-600 dark:text-neutral-400 bg-white dark:bg-neutral-800 hover:bg-neutral-50 dark:hover:bg-neutral-700"
           >
             <Download className="w-5 h-5 mr-3" />
             Audit Report Export

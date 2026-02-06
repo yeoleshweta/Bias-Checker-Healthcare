@@ -16,14 +16,14 @@ export default function AuditScore({
   label,
 }: AuditScoreProps) {
   return (
-    <div className="soft-card p-10 bg-white">
-      <div className="grid grid-cols-3 gap-10">
+    <div className="premium-card p-8 md:p-10 bg-white dark:bg-neutral-800/50 rounded-3xl">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {/* Audit Score */}
         <div className="text-center group">
-          <p className="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-4">
+          <p className="text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-4">
             Integrity Score
           </p>
-          <div className="text-6xl font-display font-extrabold text-neutral-900 leading-none group-hover:text-primary transition-smooth">
+          <div className="text-6xl font-display font-extrabold text-neutral-900 dark:text-white leading-none group-hover:text-primary transition-all-300">
             {score}
           </div>
           <p className="text-[10px] font-bold text-neutral-400 mt-4 uppercase tracking-[0.2em]">
@@ -32,8 +32,8 @@ export default function AuditScore({
         </div>
 
         {/* Compliance Rating */}
-        <div className="text-center border-x border-neutral-100 px-6">
-          <p className="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-4">
+        <div className="text-center md:border-x border-neutral-100 dark:border-neutral-700 px-6">
+          <p className="text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-4">
             Audited Policy
           </p>
           <div className="flex items-center justify-center h-16">
@@ -53,7 +53,7 @@ export default function AuditScore({
 
         {/* Confidence */}
         <div className="text-center">
-          <p className="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-4">
+          <p className="text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-4">
             ML Certainty
           </p>
           <div className="text-4xl font-display font-extrabold text-primary leading-none">
@@ -66,9 +66,9 @@ export default function AuditScore({
       </div>
 
       {/* Bias Label Badge */}
-      <div className="mt-10 pt-10 border-t border-neutral-100">
+      <div className="mt-10 pt-10 border-t border-neutral-100 dark:border-neutral-700">
         <div className="flex items-center justify-between">
-          <span className="text-sm font-bold text-neutral-500 uppercase tracking-widest">
+          <span className="text-sm font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-widest">
             Diagnostic Category:
           </span>
           <Badge label={label} />

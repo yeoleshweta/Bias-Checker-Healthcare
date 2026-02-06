@@ -96,11 +96,11 @@ export default function TaxonomyPage() {
         <div className="mb-8">
           <div className="flex items-center mb-4">
             <BookOpen className="w-8 h-8 text-blue-600 mr-3" />
-            <h1 className="text-3xl font-bold text-gray-900">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-neutral-50">
               Bias Taxonomy Guide
             </h1>
           </div>
-          <p className="text-gray-600">
+          <p className="text-gray-600 dark:text-neutral-400">
             Understanding the bias categories in clinical documentation. While
             the model classifies into 4 categories (No Bias, Demographic,
             Clinical Stigma, Assessment), this guide covers extended bias types
@@ -113,7 +113,7 @@ export default function TaxonomyPage() {
           {biasTypes.map((bias, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden hover:shadow-lg transition-smooth"
+              className="bg-white dark:bg-neutral-800 rounded-lg shadow-md border border-gray-200 dark:border-neutral-700 overflow-hidden hover:shadow-lg transition-smooth"
             >
               <div
                 className={`${bias.color} px-6 py-4 border-l-4 border-current`}
@@ -122,20 +122,22 @@ export default function TaxonomyPage() {
               </div>
               <div className="p-6">
                 <div className="mb-4">
-                  <h3 className="text-sm font-semibold text-gray-700 mb-2">
+                  <h3 className="text-sm font-semibold text-gray-700 dark:text-neutral-200 mb-2">
                     Description
                   </h3>
-                  <p className="text-gray-600">{bias.description}</p>
+                  <p className="text-gray-600 dark:text-neutral-400">
+                    {bias.description}
+                  </p>
                 </div>
                 <div className="mb-4">
-                  <h3 className="text-sm font-semibold text-gray-700 mb-2">
+                  <h3 className="text-sm font-semibold text-gray-700 dark:text-neutral-200 mb-2">
                     Examples
                   </h3>
                   <ul className="space-y-2">
                     {bias.examples.map((example, idx) => (
                       <li
                         key={idx}
-                        className="text-gray-600 italic pl-4 border-l-2 border-gray-300"
+                        className="text-gray-600 dark:text-neutral-400 italic pl-4 border-l-2 border-gray-300 dark:border-neutral-600"
                       >
                         &quot;{example}&quot;
                       </li>
@@ -143,10 +145,12 @@ export default function TaxonomyPage() {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-700 mb-2">
+                  <h3 className="text-sm font-semibold text-gray-700 dark:text-neutral-200 mb-2">
                     Why It Matters
                   </h3>
-                  <p className="text-gray-600">{bias.impact}</p>
+                  <p className="text-gray-600 dark:text-neutral-400">
+                    {bias.impact}
+                  </p>
                 </div>
               </div>
             </div>

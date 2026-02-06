@@ -17,11 +17,11 @@ export default function RobustnessPage() {
         <div className="mb-8">
           <div className="flex items-center mb-4">
             <Activity className="w-8 h-8 text-blue-600 mr-3" />
-            <h1 className="text-3xl font-bold text-gray-900">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-neutral-50">
               Robustness Engine
             </h1>
           </div>
-          <p className="text-gray-600">
+          <p className="text-gray-600 dark:text-neutral-400">
             Model performance metrics, architecture details, and training
             methodology for the ABIM Bias Checker.
           </p>
@@ -29,15 +29,17 @@ export default function RobustnessPage() {
 
         {/* Performance Metrics */}
         <div className="grid md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
+          <div className="bg-white dark:bg-neutral-800 rounded-lg shadow-md border border-gray-200 dark:border-neutral-700 p-6">
             <div className="flex items-center justify-between mb-4">
               <TrendingUp className="w-8 h-8 text-green-600" />
-              <span className="text-3xl font-bold text-gray-900">98.7%</span>
+              <span className="text-3xl font-bold text-gray-900 dark:text-neutral-50">
+                98.7%
+              </span>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-neutral-200">
               Model Accuracy
             </h3>
-            <p className="text-sm text-gray-600 mt-2">
+            <p className="text-sm text-gray-600 dark:text-neutral-400 mt-2">
               Overall classification accuracy across all 4 bias categories on
               test set
             </p>
@@ -109,9 +111,13 @@ export default function RobustnessPage() {
               LoRA Configuration
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="bg-gray-50 rounded-lg p-4">
-                <p className="text-sm text-gray-500">Rank (r)</p>
-                <p className="text-xl font-bold text-gray-900">16</p>
+              <div className="bg-gray-50 dark:bg-neutral-900 rounded-lg p-4">
+                <p className="text-sm text-gray-500 dark:text-neutral-400">
+                  Rank (r)
+                </p>
+                <p className="text-xl font-bold text-gray-900 dark:text-neutral-100">
+                  16
+                </p>
               </div>
               <div className="bg-gray-50 rounded-lg p-4">
                 <p className="text-sm text-gray-500">Alpha</p>

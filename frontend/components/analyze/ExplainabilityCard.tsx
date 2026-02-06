@@ -14,8 +14,8 @@ export default function ExplainabilityCard({
         <AlertCircle className="w-4 h-4 mr-2 text-primary" />
         Audit Rationale
       </h3>
-      <div className="bg-primary-light/30 border-l-4 border-primary p-8 rounded-xl shadow-premium shadow-primary/5">
-        <p className="text-neutral-800 italic leading-relaxed text-xl font-medium">
+      <div className="bg-primary-light/30 dark:bg-primary/10 border-l-4 border-primary p-8 rounded-xl shadow-premium shadow-primary/5">
+        <p className="text-neutral-800 dark:text-neutral-200 italic leading-relaxed text-xl font-medium">
           &quot;{rationale}&quot;
         </p>
       </div>
