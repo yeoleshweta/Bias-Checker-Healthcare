@@ -33,13 +33,36 @@ def predict():
         if not isinstance(text, str) or len(text.strip()) == 0:
             return jsonify({"error": "Text must be a non-empty string"}), 400
         
+        
         # Make prediction
         predicted_label, confidence = predict_bias(text)
+        
+        # Calculate Audit Score (Logic migrated from frontend)
+        if predicted_label == 'no_bias':
+            audit_score = min(10, round(8 + confidence * 2))
+        else:
+            audit_score = max(1, round((1 - confidence) * 10))
+            
+        # Determine Compliance Rating
+        if audit_score >= 9: compliance_rating = 'Excellent'
+        elif audit_score >= 7: compliance_rating = 'Good'
+        elif audit_score >= 5: compliance_rating = 'Fair'
+        elif audit_score >= 3: compliance_rating = 'Needs Improvement'
+        else: compliance_rating = 'High Risk'
+
+        # Generate Explanation via OpenAI
+        from llm_service import generate_bias_explanation
+        explanation = generate_bias_explanation(text, predicted_label, confidence)
         
         return jsonify({
             "text": text,
             "predicted_label": predicted_label,
-            "confidence": round(confidence, 4)
+            "confidence": round(confidence, 4),
+            "audit_score": audit_score,
+            "compliance_rating": compliance_rating,
+            "rationale": explanation.get("rationale", ""),
+            "flags": explanation.get("flags", []),
+            "recommended_revision": explanation.get("recommended_revision", text)
         }), 200
     
     except Exception as e:
