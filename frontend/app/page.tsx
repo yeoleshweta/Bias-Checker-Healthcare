@@ -2,497 +2,354 @@
 
 import React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Shield,
-  Target,
-  Zap,
-  BarChart3,
-  Database,
-  FileText,
-  Stethoscope,
-  Users,
-  Globe,
-  BrainCircuit,
-  MessageSquareWarning,
-  Scale,
-  GraduationCap,
-  Sparkles,
-  CheckCircle2,
-  FlaskConical,
-} from "lucide-react";
-import Button from "@/components/ui/Button";
-import Navbar from "@/components/Navbar";
 import BiasChecker from "@/components/BiasChecker";
+import { Download, FileText, Share2 } from "lucide-react";
 
-export default function OnePageWebsite() {
-  const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.6 },
-  };
-
+export default function ResearchPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-primary/20">
-      <Navbar />
+    <article className="max-w-4xl mx-auto px-6 py-12 md:py-20 selection:bg-primary/10">
+      {/* Header */}
+      <header className="mb-12 border-b border-border pb-12">
+        <div className="mb-6">
+          <h1 className="text-3xl md:text-5xl font-sans font-bold leading-tight mb-4">
+            ABIM AI Bias Checker: A Transformer-Based Classifier for Detecting
+            Bias
+          </h1>
+          <div className="flex flex-wrap gap-4 text-sm text-neutral-600 dark:text-neutral-400 font-sans">
+            <div className="flex items-center gap-2">
+              <span className="font-bold text-foreground">Shweta Sharma</span>
+              <span className="bg-neutral-100 dark:bg-neutral-800 px-2 py-0.5 rounded text-xs border border-neutral-200 dark:border-neutral-700">
+                ABIM
+              </span>
+            </div>
+            <span className="text-neutral-300">|</span>
+            <span>February 6, 2026</span>
+          </div>
+        </div>
 
-      {/* Hero Section */}
-      <section className="relative pt-40 pb-32 overflow-hidden">
-        {/* Background Decorations */}
-        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-[500px] h-[500px] bg-success/10 rounded-full blur-[100px] pointer-events-none" />
-
-        <div className="container max-w-7xl mx-auto px-6 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl mx-auto"
+        <div className="flex gap-3">
+          <Link
+            href="#interactive-demo"
+            className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-sans font-medium bg-primary text-white hover:bg-primary-hover rounded transition-colors"
           >
-            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary/5 border border-primary/20 backdrop-blur-sm mb-8">
-              <Sparkles size={16} className="text-primary" />
-              <span className="text-sm font-bold tracking-wide text-neutral-700 dark:text-neutral-300">
-                Next-Generation Fairness Audit
-              </span>
-            </div>
-            <h1 className="text-6xl md:text-8xl font-display font-extrabold tracking-tight mb-8 leading-[1.05]">
-              Exposing Bias in <br />
-              <span className="gradient-text drop-shadow-sm">
-                Healthcare Assessment.
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-neutral-600 dark:text-neutral-300 mb-12 leading-relaxed max-w-3xl mx-auto font-medium">
-              ABIM BiasGuard leverages task-specific AI to ensure fairness and
-              professionalism in clinical vignettes and trainee evaluation
-              narratives.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <a href="#analyzer">
-                <Button
-                  variant="primary"
-                  size="lg"
-                  className="px-12 h-16 text-lg rounded-2xl shadow-xl shadow-primary/20"
-                >
-                  Analyze Content <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </a>
-              <a href="#research">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="px-12 h-16 text-lg rounded-2xl bg-white dark:bg-neutral-900 border-neutral-200 dark:border-neutral-700"
-                >
-                  Read the Research
-                </Button>
-              </a>
-            </div>
-          </motion.div>
+            Live Demo
+          </Link>
+          <button className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-sans font-medium bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded transition-colors">
+            <FileText size={14} /> View PDF
+          </button>
+          <button className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-sans font-medium bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded transition-colors">
+            <Download size={14} /> Dataset
+          </button>
+          <button className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-sans font-medium bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded transition-colors">
+            <Share2 size={14} /> Cite
+          </button>
         </div>
+      </header>
+
+      {/* Abstract */}
+      <section className="bg-neutral-50 dark:bg-neutral-900/50 p-6 md:p-8 rounded-lg border border-neutral-100 dark:border-neutral-800 mb-12">
+        <h3 className="text-sm font-sans font-bold uppercase tracking-wider text-neutral-500 mb-3 mt-0">
+          Abstract
+        </h3>
+        <p className="text-base md:text-lg leading-relaxed mb-4">
+          Bias in high-stakes medical assessment ecosystems can manifest in exam
+          vignette framing, clinical documentation language, and narrative
+          evaluations of trainees. This work presents{" "}
+          <strong>ABIM AI Bias Checker</strong>, an end-to-end framework to:
+        </p>
+        <ul className="list-disc list-inside space-y-1 mb-4 ml-2">
+          <li>
+            Define a healthcare-specific bias taxonomy aligned with ABIM-style
+            internal medicine contexts.
+          </li>
+          <li>
+            Fine-tune transformer-based classifiers (BERT/RoBERTa) to detect
+            bias categories.
+          </li>
+        </ul>
+        <p className="text-base md:text-lg leading-relaxed mb-0">
+          The resulting dataset includes seven labels spanning demographic bias,
+          clinical stigma, assessment bias, documentation bias, structural bias,
+          algorithmic bias, and neutral clinical text. We describe model design
+          decisions (partial layer freezing and task-specific heads), evaluation
+          protocols, and practical lessons learned from tooling
+          incompatibilities during development. This paper is intended as a
+          reproducible template for an &quot;AI assurance&quot; workflow for
+          medical assessment organizations.
+        </p>
       </section>
 
-      {/* Analyzer CTA Section */}
+      {/* Intro */}
+      <section className="mb-16">
+        <h2>1. Introduction</h2>
+        <p>
+          Medical certification and assessment programs increasingly explore
+          automation for content generation, feedback drafting, candidate
+          support, and workflow triage. In these settings, bias can appear in
+          subtle but impactful ways:{" "}
+          <strong>
+            stereotyping trainees, stigmatizing patients, or embedding
+            structural inequities into evaluation criteria.
+          </strong>{" "}
+          Separately, algorithmic systems can amplify existing inequities
+          through proxy features (e.g., accent, grammar, insurance status) or
+          biased historical labels.
+        </p>
+        <p>
+          This paper describes the ABIM AI Bias Checker, a practical system for
+          developing a bias classifier tailored to ABIM-style internal medicine
+          contexts. The project combines:
+        </p>
+        <ul className="list-disc pl-6 space-y-2 mb-6 text-neutral-700 dark:text-neutral-300">
+          <li>A healthcare-specific bias taxonomy;</li>
+          <li>
+            Transformer-based multi-class text classifiers with partial layer
+            freezing;
+          </li>
+          <li>
+            An evaluation harness suitable for repeated testing and governance
+            workflows.
+          </li>
+        </ul>
+      </section>
+
+      {/* Interactive Figure */}
       <section
-        id="analyzer"
-        className="py-24 bg-neutral-50/50 dark:bg-neutral-900/20 border-y border-neutral-200 dark:border-neutral-800 scroll-mt-24"
+        id="interactive-demo"
+        className="my-16 border rounded-xl overflow-hidden shadow-sm bg-neutral-50 dark:bg-neutral-900"
       >
-        <div className="container max-w-7xl mx-auto px-6 text-center">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-extrabold mb-8 tracking-tight">
-              Ready to{" "}
-              <span className="gradient-text">Audit Your Assessment?</span>
-            </h2>
-            <p className="text-xl text-neutral-600 dark:text-neutral-300 mb-12 leading-relaxed max-w-2xl mx-auto font-medium">
-              Launch our advanced diagnostic tool to detect implicit bias in
-              your clinical narratives with real-time feedback.
-            </p>
-            <Link href="/analyze">
-              <Button
-                variant="primary"
-                size="lg"
-                className="px-16 h-20 text-xl rounded-2xl shadow-xl shadow-primary/20 hover:shadow-primary/30 hover:scale-105 transition-all duration-300"
-              >
-                <Zap className="mr-3 w-6 h-6" />
-                Launch Analyzer
-              </Button>
-            </Link>
-          </div>
+        <div className="bg-white dark:bg-black p-4 border-b text-xs font-mono text-neutral-500 uppercase tracking-wider flex justify-between items-center">
+          <span>Figure 1: Interactive Prototype</span>
+          <span className="text-green-600 flex items-center gap-1">
+            • Live Model
+          </span>
+        </div>
+        <div className="p-0">
+          {/* We are embedding the cleaner BiasChecker here. 
+                Ideally, BiasChecker should be refactored to remove its own "Hero" titles if we want a pure component.
+                For now, we will use it and the user can see it works.
+            */}
+          <BiasChecker />
+        </div>
+        <div className="p-4 bg-neutral-50 dark:bg-neutral-900 border-t text-sm text-neutral-600 dark:text-neutral-400 italic">
+          <strong>Figure 1.</strong> The deployed inference interface allowing
+          real-time bias detection on clinical vignettes. The model predicts one
+          of 7 bias categories and provides a confidence score and
+          explainability rationale.
         </div>
       </section>
 
-      {/* Research & Stats Section */}
-      <section id="research" className="py-32 scroll-mt-24">
-        <div className="container max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <motion.div {...fadeInUp}>
-              <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-4">
-                The Evidence
-              </h2>
-              <h3 className="text-4xl md:text-6xl font-extrabold mb-8 tracking-tight">
-                Data-Driven <br />
-                Assessment Fairness.
-              </h3>
-              <p className="text-lg text-neutral-600 dark:text-neutral-300 mb-10 leading-relaxed font-medium">
-                Research shows that pediatric and internal medicine narratives
-                often carry implicit bias. Our model was trained on thousands of
-                validated clinical samples to identify these subtle patterns
-                that traditional manual reviews often miss.
-              </p>
+      {/* Background */}
+      <section className="mb-16">
+        <h2>2. Background and Motivation</h2>
+        <h3>2.1 Bias in healthcare and medical evaluation</h3>
+        <p>
+          Bias in healthcare has been documented across clinical decision
+          support, risk prediction, documentation practices, and resource
+          allocation. Algorithmic bias in population health management has been
+          shown to produce systematic racial disparities when cost is used as a
+          proxy for need [1]. Bias also appears in narrative evaluations and
+          structured assessments through stereotyped expectations and
+          inequitable norms [2]. A practical ABIM-themed classifier must
+          therefore capture both <em>language harms</em> (stigmatizing wording,
+          stereotypes) and <em>system harms</em> (structural constraints,
+          algorithmic scoring issues).
+        </p>
+      </section>
 
-              <div className="space-y-6">
-                {[
-                  {
-                    icon: <Database className="text-blue-500" />,
-                    title: "3.5k+ Validated Samples",
-                    desc: "Trained on peer-reviewed clinical vignettes and feedback narratives.",
-                  },
-                  {
-                    icon: <CheckCircle2 className="text-success" />,
-                    title: "98.6% Classification Accuracy",
-                    desc: "State-of-the-art performance in bias category assignment.",
-                  },
-                  {
-                    icon: <FlaskConical className="text-violet-500" />,
-                    title: "Explainable Methodology",
-                    desc: "Beyond labels—we provide clinical rationales for every flag.",
-                  },
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    className="flex gap-4 p-4 rounded-2xl bg-white dark:bg-neutral-950/80 border border-neutral-100 dark:border-neutral-800 shadow-xl shadow-neutral-200/50 dark:shadow-none backdrop-blur-sm hover:border-primary/30 transition-all duration-300 group"
-                  >
-                    <div className="shrink-0 p-3 rounded-xl bg-primary/5 dark:bg-white/10 h-fit group-hover:scale-110 transition-transform duration-300">
-                      {item.icon}
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-lg text-neutral-800 dark:text-white">
-                        {item.title}
-                      </h4>
-                      <p className="text-neutral-500 dark:text-neutral-400 text-sm leading-relaxed">
-                        {item.desc}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+      {/* Taxonomy */}
+      <section className="mb-16">
+        <h2>3. ABIM Bias Taxonomy (7 Labels)</h2>
+        <p>
+          We define seven labels that reflect biases commonly observed in
+          healthcare communication, documentation, and assessment, as well as
+          algorithmic fairness concerns.
+        </p>
 
-            <motion.div
-              {...fadeInUp}
-              className="relative aspect-square lg:aspect-auto h-full min-h-[500px] rounded-[40px] overflow-hidden bg-gradient-to-br from-white to-neutral-50 dark:from-neutral-900 dark:to-neutral-950 border border-white/50 dark:border-neutral-800 shadow-2xl"
-            >
-              {/* Dark Gradient Background (Dark Mode Only) */}
-              <div className="absolute inset-0 bg-transparent dark:bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] dark:from-neutral-800/50 dark:via-neutral-950 dark:to-neutral-950 pointer-events-none transition-colors duration-300" />
-
-              {/* Ambient Glows */}
-              <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/20 dark:bg-primary/10 rounded-full blur-[120px] pointer-events-none mix-blend-multiply dark:mix-blend-normal" />
-              <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-secondary/20 dark:bg-secondary/10 rounded-full blur-[100px] pointer-events-none mix-blend-multiply dark:mix-blend-normal" />
-
-              <div className="absolute inset-0 p-12 flex flex-col justify-center gap-12 z-10">
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div className="p-8 rounded-3xl text-center bg-white/40 dark:bg-white/5 border border-white/60 dark:border-white/10 backdrop-blur-md shadow-lg dark:shadow-inner">
-                    <div className="text-5xl font-extrabold mb-2 font-display gradient-text dark:bg-gradient-to-br dark:from-white dark:to-neutral-400 dark:bg-clip-text dark:text-transparent">
-                      92%
-                    </div>
-                    <div className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-widest">
-                      Precision
-                    </div>
-                  </div>
-                  <div className="p-8 rounded-3xl text-center bg-white/40 dark:bg-white/5 border border-white/60 dark:border-white/10 backdrop-blur-md shadow-lg dark:shadow-inner">
-                    <div className="text-5xl font-extrabold mb-2 font-display gradient-text dark:bg-gradient-to-br dark:from-white dark:to-neutral-400 dark:bg-clip-text dark:text-transparent">
-                      89%
-                    </div>
-                    <div className="text-xs font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-widest">
-                      Recall
-                    </div>
-                  </div>
-                </div>
-
-                <div className="p-8 rounded-3xl bg-white/40 dark:bg-white/5 border border-white/60 dark:border-white/10 backdrop-blur-md shadow-xl dark:shadow-lg">
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="font-bold text-neutral-800 dark:text-white">
-                      Benchmarking Performance
-                    </span>
-                    <BarChart3 size={20} className="text-primary" />
-                  </div>
-                  <div className="space-y-5">
-                    {[
-                      { l: "RoBERTa (Ours)", v: "100%", p: "98.6%" },
-                      { l: "BERT-Base", v: "82%", p: "82.1%" },
-                      { l: "Human Review", v: "65%", p: "65.4%" },
-                    ].map((row, i) => (
-                      <div key={i} className="space-y-2">
-                        <div className="flex justify-between text-xs font-bold text-neutral-600 dark:text-neutral-300">
-                          <span>{row.l}</span>
-                          <span className="font-mono text-neutral-800 dark:text-white">
-                            {row.p}
-                          </span>
-                        </div>
-                        <div className="h-2 bg-neutral-200 dark:bg-neutral-800 rounded-full overflow-hidden shadow-inner">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            whileInView={{
-                              width: row.v,
-                            }}
-                            transition={{ duration: 1, delay: 0.5 }}
-                            className="h-full bg-gradient-to-r from-primary to-secondary shadow-[0_0_10px_rgba(99,102,241,0.5)]"
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+        <div className="overflow-x-auto my-8 border rounded-lg shadow-sm">
+          <table className="w-full text-left text-sm">
+            <thead className="bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 font-sans">
+              <tr>
+                <th className="p-4 border-b min-w-[140px]">Label</th>
+                <th className="p-4 border-b min-w-[200px]">Definition</th>
+                <th className="p-4 border-b min-w-[200px]">
+                  Common Manifestations
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-neutral-100 dark:divide-neutral-800 bg-white dark:bg-neutral-900">
+              <tr>
+                <td className="p-4 font-mono text-xs font-bold text-green-700 dark:text-green-400">
+                  no_bias
+                </td>
+                <td className="p-4">
+                  Clinically appropriate, neutral language; no stereotypes,
+                  stigma, or inequitable assumptions.
+                </td>
+                <td className="p-4 text-neutral-600 dark:text-neutral-400">
+                  Evidence-based reasoning; respectful patient-centered
+                  descriptions.
+                </td>
+              </tr>
+              <tr>
+                <td className="p-4 font-mono text-xs font-bold text-red-700 dark:text-red-400">
+                  demographic_bias
+                </td>
+                <td className="p-4">
+                  Biased assumptions linked to race/ethnicity, gender, age,
+                  language, immigration status, training pathway.
+                </td>
+                <td className="p-4 text-neutral-600 dark:text-neutral-400">
+                  Coded language (&quot;from that neighborhood&quot;); lower
+                  expectations for IMGs.
+                </td>
+              </tr>
+              <tr>
+                <td className="p-4 font-mono text-xs font-bold text-orange-700 dark:text-orange-400">
+                  clinical_stigma
+                </td>
+                <td className="p-4">
+                  Biased evaluation framing in trainee or candidate assessment
+                  that lacks objectivity.
+                </td>
+                <td className="p-4 text-neutral-600 dark:text-neutral-400">
+                  Blame framing (&quot;lack of motivation&quot;);
+                  &quot;drug-seeking&quot; shortcuts.
+                </td>
+              </tr>
+              <tr>
+                <td className="p-4 font-mono text-xs font-bold text-purple-700 dark:text-purple-400">
+                  assessment_bias
+                </td>
+                <td className="p-4">
+                  Bias in how trainees/candidates are evaluated or scored;
+                  unfair norms in rubrics.
+                </td>
+                <td className="p-4 text-neutral-600 dark:text-neutral-400">
+                  Penalizing shared decision-making; accent equated with
+                  incompetence.
+                </td>
+              </tr>
+              <tr>
+                <td className="p-4 font-mono text-xs font-bold text-blue-700 dark:text-blue-400">
+                  algorithmic_bias
+                </td>
+                <td className="p-4">
+                  Bias arising from automated scoring, AI-generated feedback, or
+                  data-driven rubrics.
+                </td>
+                <td className="p-4 text-neutral-600 dark:text-neutral-400">
+                  Proxy features drive lower scores; historical label bias in
+                  training data.
+                </td>
+              </tr>
+              <tr>
+                <td className="p-4 font-mono text-xs font-bold text-yellow-700 dark:text-yellow-400">
+                  documentation_bias
+                </td>
+                <td className="p-4">
+                  Biased framing in charting or case descriptions that labels
+                  patients without context.
+                </td>
+                <td className="p-4 text-neutral-600 dark:text-neutral-400">
+                  &quot;Non-compliant&quot; without barriers; negative
+                  descriptors not clinically necessary.
+                </td>
+              </tr>
+              <tr>
+                <td className="p-4 font-mono text-xs font-bold text-pink-700 dark:text-pink-400">
+                  structural_bias
+                </td>
+                <td className="p-4">
+                  System-level inequity due to policies, resourcing, or
+                  institutional constraints.
+                </td>
+                <td className="p-4 text-neutral-600 dark:text-neutral-400">
+                  Rigid requirements disadvantaging part-time physicians;
+                  unequal access to resources.
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
-      {/* Taxonomy Section */}
-      <section
-        id="taxonomy"
-        className="py-32 bg-gradient-to-b from-neutral-50 to-neutral-100 dark:bg-none dark:bg-neutral-950 text-neutral-900 dark:text-white overflow-hidden relative transition-colors duration-500"
-      >
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 dark:bg-primary/10 rounded-full blur-[150px] pointer-events-none" />
+      {/* Model Architecture */}
+      <section className="mb-16">
+        <h2>4. Model Architecture and Training</h2>
+        <p>
+          We fine-tune pretrained transformers (BERT/RoBERTa) by attaching a
+          task-specific classification head to the pooled representation. We
+          experiment with <strong>partial layer freezing</strong> to stabilize
+          training and reduce overfitting on synthetic data.
+        </p>
 
-        <div className="container max-w-7xl mx-auto px-6 relative">
-          <div className="max-w-3xl mb-24">
-            <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-4">
-              Bias Taxonomy
-            </h2>
-            <h3 className="text-4xl md:text-7xl font-extrabold mb-8 tracking-tight italic text-neutral-900 dark:text-white">
-              A Comprehensive <br />
-              Multidimensional Grid.
-            </h3>
-            <p className="text-xl text-neutral-600 dark:text-neutral-400 font-medium leading-relaxed">
-              Our framework identifies 7 distinct types of bias used by
-              clinicians and academic evaluators, categorized across
-              patient-facing narratives and professional assessments.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                icon: <Users className="text-blue-400" />,
-                title: "Demographic Bias",
-                desc: "Attributing behavior or health outcomes to race, ethnicity, or culture through generalized assumptions.",
-              },
-              {
-                icon: <MessageSquareWarning className="text-amber-400" />,
-                title: "Clinical Stigma",
-                desc: "Using judgmental language ('non-compliant', 'drug-seeking') that obscures clinical truth.",
-              },
-              {
-                icon: <GraduationCap className="text-success" />,
-                title: "Assessment Bias",
-                desc: "Subjective framing of trainee behavior that lacks objective, observable evidence.",
-              },
-              {
-                icon: <FileText className="text-violet-400" />,
-                title: "Documentation",
-                desc: "Inconsistent recording of facts filtered through the evaluator's implicit perception.",
-              },
-              {
-                icon: <BrainCircuit className="text-pink-400" />,
-                title: "Algorithmic Bias",
-                desc: "Systemic bias mirrored in score reporting or automated risk stratification logic.",
-              },
-              {
-                icon: <Scale className="text-emerald-400" />,
-                title: "Structural Bias",
-                desc: "Blaming individuals for outcomes rooted in systemic healthcare access limitations.",
-              },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                whileHover={{ y: -10 }}
-                className="p-8 rounded-[32px] bg-white dark:bg-white/5 border border-neutral-100 dark:border-white/10 shadow-xl shadow-neutral-200/50 dark:shadow-none backdrop-blur-sm group hover:border-primary/20 dark:hover:bg-white/10 dark:hover:border-white/20 transition-all duration-300"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-primary/5 dark:bg-white/10 flex items-center justify-center mb-8 border border-primary/10 dark:border-white/10 group-hover:scale-110 transition-transform">
-                  {item.icon}
-                </div>
-                <h4 className="text-xl font-bold mb-4 text-neutral-900 dark:text-white">
-                  {item.title}
-                </h4>
-                <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed font-medium">
-                  {item.desc}
-                </p>
-              </motion.div>
-            ))}
-
-            {/* CTA Card for Taxonomy */}
-            <div className="p-8 rounded-[32px] bg-primary flex flex-col justify-end lg:col-span-2 group cursor-pointer relative overflow-hidden">
-              <Shield className="absolute top-8 right-8 w-32 h-32 text-white opacity-10 -rotate-12 group-hover:rotate-0 transition-transform duration-700" />
-              <div>
-                <h4 className="text-3xl font-extrabold mb-4 text-white leading-tight">
-                  View Full Research <br />
-                  Taxonomy Paper
-                </h4>
-                <Link
-                  href="/taxonomy"
-                  className="inline-flex items-center text-sm font-bold text-white uppercase tracking-widest gap-2"
-                >
-                  Open Documentation <ArrowRight size={16} />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
+        <h3>Training Configuration</h3>
+        <ul className="list-disc pl-6 space-y-2 mb-6">
+          <li>
+            <strong>Max length:</strong> 256 tokens
+          </li>
+          <li>
+            <strong>Batch size:</strong> 16
+          </li>
+          <li>
+            <strong>Epochs:</strong> 3–6 (Early stopping on Macro-F1)
+          </li>
+          <li>
+            <strong>Optimizer:</strong> AdamW
+          </li>
+          <li>
+            <strong>Learning Rate:</strong> 2e-5 to 5e-5
+          </li>
+        </ul>
       </section>
 
-      {/* Methodology Section */}
-      <section id="methodology" className="py-32 scroll-mt-24">
-        <div className="container max-w-7xl mx-auto px-6">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-24">
-              <h2 className="text-sm font-bold text-primary uppercase tracking-[0.3em] mb-4">
-                Integrity & Standard
-              </h2>
-              <h3 className="text-4xl md:text-6xl font-extrabold tracking-tight">
-                The ABIM Alignment.
-              </h3>
-            </div>
-
-            <div className="relative">
-              {/* Connecting Line */}
-              <div className="hidden md:block absolute top-12 left-0 w-full h-1 bg-gradient-to-r from-primary/20 via-primary/50 to-primary/20" />
-
-              <div className="grid md:grid-cols-3 gap-12 relative">
-                {[
-                  {
-                    title: "Neutral Description",
-                    desc: "Language must remain objective and descriptive of behavior, avoiding adjectives like 'unprofessional' without context.",
-                  },
-                  {
-                    title: "Evidence-Based",
-                    desc: "Observations must be rooted in direct encounters, preventing secondary hearsay from influencing formal assessments.",
-                  },
-                  {
-                    title: "Equitable Metrics",
-                    desc: "Metrics are calibrated to ensure demographic background does not correlate with negative assessment markers.",
-                  },
-                ].map((item, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.2 }}
-                    className="space-y-6 relative pt-4"
-                  >
-                    <div className="w-16 h-16 mx-auto bg-background rounded-full border-4 border-primary flex items-center justify-center font-display font-bold text-xl text-primary relative z-10 shadow-[0_0_0_8px_rgba(var(--background-rgb))]">
-                      0{i + 1}
-                    </div>
-                    <div className="text-center px-4">
-                      <h4 className="text-2xl font-bold tracking-tight mb-4">
-                        {item.title}
-                      </h4>
-                      <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed font-medium">
-                        {item.desc}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
+      {/* Results */}
+      <section className="mb-16">
+        <h2>5. Results</h2>
+        <div className="flex p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-md gap-3 mb-6">
+          <span className="text-yellow-600 font-bold shrink-0">TODO:</span>
+          <span className="text-sm text-yellow-800 dark:text-yellow-200">
+            Insert final model performance metrics (Macro-F1, Accuracy) and
+            Confusion Matrix figure.
+          </span>
         </div>
+        <p>
+          Preliminary results indicate strong performance in distinguishing
+          overt bias categories, with some confusion observed between{" "}
+          <em>documentation_bias</em> and <em>clinical_stigma</em>,
+          necessitating further refinement of label boundaries.
+        </p>
       </section>
 
-      {/* Footer */}
-      <footer className="py-20 border-t border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900">
-        <div className="container max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-4 gap-12 mb-16">
-            <div className="col-span-1 md:col-span-1">
-              <div className="flex items-center gap-2 mb-6 group cursor-pointer">
-                <div className="bg-primary p-2 rounded-lg group-hover:rotate-12 transition-transform">
-                  <Shield className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-xl font-bold font-display">
-                  BiasGuard<span className="text-primary italic">.ai</span>
-                </span>
-              </div>
-              <p className="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed mb-6">
-                Pioneering fairness in medical education through advanced NLP
-                diagnostics.
-              </p>
-              <div className="flex gap-4">
-                {/* Social placeholders */}
-                <div className="w-8 h-8 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center hover:bg-primary hover:text-white transition-colors cursor-pointer">
-                  <Globe size={16} />
-                </div>
-                <div className="w-8 h-8 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center hover:bg-primary hover:text-white transition-colors cursor-pointer">
-                  <Users size={16} />
-                </div>
-              </div>
-            </div>
+      {/* Discussion */}
+      <section className="mb-16">
+        <h2>6. Discussion</h2>
+        <p>
+          The system can be integrated into a recurring evaluation harness to
+          run periodic bias detection on newly generated vignettes and track
+          model drift. Including a short rationale encourages transparent
+          mapping between a label and the text, supporting annotation
+          calibration.
+        </p>
+        <h3>Limitations</h3>
+        <p>
+          Synthetic data is not ground truth for real-world deployment. Common
+          risks include style artifacts (model-specific phrasing) and incomplete
+          coverage of real ABIM item-writing norms. Future work will involve
+          blending synthetic data with carefully governed de-identified
+          real-world text.
+        </p>
+      </section>
 
-            {[
-              {
-                title: "Product",
-                links: [
-                  "Features",
-                  "Integrations",
-                  "Enterprise",
-                  "Security",
-                  "Changelog",
-                ],
-              },
-              {
-                title: "Resources",
-                links: [
-                  "Documentation",
-                  "API Reference",
-                  "Research Paper",
-                  "Community",
-                  "Help Center",
-                ],
-              },
-              {
-                title: "Company",
-                links: ["About Us", "Careers", "Blog", "Legal", "Contact"],
-              },
-            ].map((col, i) => (
-              <div key={i}>
-                <h4 className="font-bold mb-6 text-neutral-900 dark:text-white">
-                  {col.title}
-                </h4>
-                <ul className="space-y-4 text-sm text-neutral-500 dark:text-neutral-400">
-                  {col.links.map((link) => (
-                    <li key={link}>
-                      <a
-                        href="#"
-                        className="hover:text-primary transition-colors"
-                      >
-                        {link}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
-          <div className="pt-8 border-t border-neutral-200 dark:border-neutral-800 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-xs text-neutral-400 font-medium">
-              © 2026 ABIM BiasGuard. Designed for Healthcare Excellence.
-            </div>
-            <div className="flex gap-8 text-xs font-medium text-neutral-500">
-              <a href="#" className="hover:text-primary transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="hover:text-primary transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="hover:text-primary transition-colors">
-                Cookie Settings
-              </a>
-            </div>
-          </div>
-        </div>
+      {/* Footer / Citation */}
+      <footer className="mt-20 pt-8 border-t border-dotted border-neutral-300 dark:border-neutral-700 text-sm text-neutral-500">
+        <p className="mb-2 font-bold">Recommended Citation:</p>
+        <p className="font-mono bg-neutral-100 dark:bg-neutral-800 p-3 rounded text-xs overflow-x-auto whitespace-pre-wrap">
+          Sharma, S. (2026). ABIM AI Bias Checker: A Transformer-Based
+          Classifier for Detecting Bias. ABIM Technical Report.
+        </p>
       </footer>
-    </div>
+    </article>
   );
 }

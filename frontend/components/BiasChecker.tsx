@@ -6,11 +6,10 @@ import { analyzeBias } from "@/services/api";
 import ArtifactConsole from "@/components/analyze/ArtifactConsole";
 import ExampleTabs from "@/components/analyze/ExampleTabs";
 import ExplainabilityCard from "@/components/analyze/ExplainabilityCard";
-import FlagsDetected from "@/components/analyze/FlagsDetected";
-import RecommendedRevision from "@/components/analyze/RecommendedRevision";
+import BiasDetailsCard from "@/components/analyze/BiasDetailsCard";
 import AuditScore from "@/components/analyze/AuditScore";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Info, CheckCircle, AlertTriangle } from "lucide-react";
+import { Search, AlertTriangle, Sparkles } from "lucide-react";
 
 export default function BiasChecker() {
   const [selectedText, setSelectedText] = useState("");
@@ -48,16 +47,17 @@ export default function BiasChecker() {
       <div className="max-w-5xl mx-auto px-6">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold mb-6">
-            <Search size={16} />
-            <span>Interactive Diagnostic Tool</span>
+            <Sparkles size={16} />
+            <span>GPT-4o Powered • Few-Shot Learning</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight">
-            Analyze Your{" "}
-            <span className="gradient-text">Assessement Narrative</span>
+            Audit Clinical <span className="gradient-text">Documentation</span>
           </h2>
           <p className="text-neutral-600 dark:text-neutral-300 text-lg max-w-2xl mx-auto">
-            Input medical vignettes or trainee feedback to detect latent biases
-            using our custom-trained RoBERTa model.
+            Detect hidden biases in vignettes, research, and trainee feedback
+            using our advanced <strong>few-shot prompting engine</strong>.
+            Identifies 11 specific bias types including racial profiling,
+            stigma, and diagnostic anchoring.
           </p>
         </div>
 
@@ -91,6 +91,7 @@ export default function BiasChecker() {
                   transition={{ duration: 0.5 }}
                   className="mt-12 space-y-8"
                 >
+                  {/* Score and Summary Row */}
                   <div className="grid md:grid-cols-2 gap-8">
                     <AuditScore
                       score={result.audit_score}
@@ -98,17 +99,16 @@ export default function BiasChecker() {
                       confidence={result.confidence}
                       label={result.predicted_label}
                     />
-                    <ExplainabilityCard rationale={result.rationale} />
+                    <ExplainabilityCard
+                      rationale={result.summary || result.rationale}
+                    />
                   </div>
 
-                  <FlagsDetected
-                    flags={result.flags}
-                    originalText={result.text}
-                  />
-
-                  <RecommendedRevision
-                    revision={result.recommended_revision}
-                    originalText={result.text}
+                  {/* Detailed Bias Analysis */}
+                  <BiasDetailsCard
+                    biases={result.biases_found || []}
+                    biasLevel={result.overall_bias_level || "NONE"}
+                    biasFreeSection={result.bias_free_sections || []}
                   />
                 </motion.div>
               )}

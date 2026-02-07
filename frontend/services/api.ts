@@ -10,15 +10,37 @@ const api = axios.create({
   },
 });
 
+/**
+ * Analyze bias using the few-shot prompting pipeline.
+ * Uses GPT-4 with 5 curated medical examples to detect:
+ * - 4 Bias Categories: no_bias, demographic_bias, clinical_stigma_bias, assessment_bias
+ * - 11 Sub-Types: racial_bias, gender_bias, pain_stigma, etc.
+ */
 export async function analyzeBias(text: string): Promise<BiasAnalysisResult> {
   try {
     const request: BiasAnalysisRequest = { text };
-    // The backend now returns the full analysis result including LLM-generated rationale
-    const response = await api.post<BiasAnalysisResult>('/predict', request);
+    // Use the few-shot prompting endpoint for richer analysis
+    const response = await api.post<BiasAnalysisResult>('/predict-fewshot', request);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new Error(error.response?.data?.error || 'Failed to analyze bias. Please ensure the backend API is running.');
+    }
+    throw error;
+  }
+}
+
+/**
+ * Analyze bias using the fine-tuned RoBERTa model (legacy endpoint).
+ */
+export async function analyzeBiasLegacy(text: string): Promise<BiasAnalysisResult> {
+  try {
+    const request: BiasAnalysisRequest = { text };
+    const response = await api.post<BiasAnalysisResult>('/predict', request);
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(error.response?.data?.error || 'Failed to analyze bias.');
     }
     throw error;
   }
@@ -30,5 +52,19 @@ export async function checkHealth(): Promise<boolean> {
     return true;
   } catch {
     return false;
+  }
+}
+
+export async function getModelInfo(): Promise<{
+  model: string;
+  categories: string[];
+  total_sub_types: number;
+  total_examples: number;
+}> {
+  try {
+    const response = await api.get('/model-info');
+    return response.data;
+  } catch (error) {
+    throw new Error('Failed to fetch model info');
   }
 }

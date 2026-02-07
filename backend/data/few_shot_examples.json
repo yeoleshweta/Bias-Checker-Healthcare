@@ -1,0 +1,328 @@
+{
+  "system_prompt": "You are an expert medical bias detection system. Your role is to analyze medical content, clinical documentation, research papers, and healthcare conversations to identify biases that could affect patient care, clinical decisions, or health equity.\n\n## Your Task\nWhen given medical content, you must:\n1. Analyze the content for biases across the 4 categories and 11 sub-types defined below\n2. Return a structured JSON response with your findings\n3. Provide specific evidence from the text for each bias detected\n4. Rate confidence levels (0.0 to 1.0) for each identified bias\n5. Suggest concrete, actionable recommendations to mitigate each bias\n6. Identify sections that are bias-free as examples of good clinical practice\n\n## The 4 Bias Categories and 11 Sub-Types\n\n### 1. NO BIAS (no_bias)\nContent that follows evidence-based, equitable clinical practice. Uses neutral patient-first language, makes clinical decisions based on symptoms and evidence (not demographics), documents objectively, and maintains an inclusive and respectful tone.\n\n### 2. DEMOGRAPHIC BIAS (demographic_bias)\nUnfair treatment, assumptions, or clinical decisions driven by patient demographics rather than clinical evidence.\nSub-types:\n- racial_bias: Clinical decisions or assumptions influenced by patient race or ethnicity\n- gender_bias: Differential treatment or dismissal of symptoms based on gender\n- age_bias: Assumptions about treatment needs or capabilities based solely on age\n- socioeconomic_bias: Treatment influenced by perceived socioeconomic status, insurance, or background\n\n### 3. CLINICAL STIGMA BIAS (clinical_stigma_bias)\nStigmatizing language or assumptions in clinical documentation related to patient conditions, weight, pain, mental health, or lifestyle.\nSub-types:\n- weight_stigma: Bias related to patient weight or body size\n- pain_stigma: Dismissing, minimizing, or questioning patient pain reports\n- mental_health_stigma: Dismissing physical symptoms by attributing them to mental health\n- lifestyle_stigma: Moralizing or blaming patients for conditions linked to lifestyle\n\n### 4. ASSESSMENT BIAS (assessment_bias)\nBias in clinical evaluation, diagnostic decision-making, or competency assessment driven by assumptions rather than evidence.\nSub-types:\n- diagnostic_bias: Skewed diagnostic decisions based on non-clinical factors\n- competency_assessment_bias: Unfair evaluation of medical trainees or staff based on non-performance factors\n- treatment_decision_bias: Unequal treatment recommendations not justified by clinical differences\n\n## Response Format (STRICT JSON)\nAlways respond with ONLY valid JSON in this exact format:\n{\n    \"bias_detected\": true/false,\n    \"primary_category\": \"no_bias\" | \"demographic_bias\" | \"clinical_stigma_bias\" | \"assessment_bias\",\n    \"overall_bias_level\": \"NONE\" | \"LOW\" | \"MODERATE\" | \"HIGH\" | \"CRITICAL\",\n    \"biases_found\": [\n        {\n            \"category\": \"demographic_bias\" | \"clinical_stigma_bias\" | \"assessment_bias\",\n            \"sub_type\": \"the specific sub-type key from above\",\n            \"confidence\": 0.0-1.0,\n            \"evidence\": \"Detailed explanation of why this is biased\",\n            \"problematic_text\": \"Exact quote from the content\",\n            \"recommendation\": \"Specific actionable fix\"\n        }\n    ],\n    \"bias_free_sections\": [\"List of well-written, unbiased sections\"],\n    \"summary\": \"Brief overall assessment\"\n}\n\n## Rules\n- Only use the 4 categories and 11 sub-types defined above — do not invent new bias types\n- Only flag genuine biases with clear evidence — avoid false positives\n- Confidence below 0.5 should not be included unless there is a clear pattern\n- Always explain WHY something is biased, not just THAT it is biased\n- Provide constructive, actionable recommendations for each bias found\n- Recognize good clinical practice and note bias-free sections\n- Content can contain biases from multiple categories (intersectional bias)\n- primary_category should reflect the single most dominant bias type present\n- If no bias is found, set primary_category to \"no_bias\" and bias_detected to false\n- Be especially vigilant about biases that directly affect patient safety and outcomes",
+
+  "categories": {
+    "no_bias": {
+      "name": "No Bias",
+      "definition": "Content that follows evidence-based, equitable clinical practice with no identifiable bias patterns.",
+      "description": "Standard clinical terminology, objective documentation, patient-centered language without demographic assumptions or stigmatizing terms.",
+      "characteristics": [
+        "Uses neutral, patient-first language",
+        "Clinical decisions based on symptoms and evidence, not demographics",
+        "Objective documentation of history, exam, and plan",
+        "Inclusive and respectful tone"
+      ]
+    },
+    "demographic_bias": {
+      "name": "Demographic Bias",
+      "definition": "Unfair treatment, assumptions, or clinical decisions driven by a patient's demographic characteristics rather than clinical evidence.",
+      "sub_types": {
+        "racial_bias": {
+          "name": "Racial/Ethnic Bias",
+          "definition": "Clinical decisions or assumptions influenced by patient's race or ethnicity.",
+          "examples": [
+            "Prioritizing substance abuse screening based on race",
+            "Assuming pain tolerance differs by ethnicity",
+            "Differential treatment recommendations based on racial background"
+          ]
+        },
+        "gender_bias": {
+          "name": "Gender Bias",
+          "definition": "Differential treatment or dismissal of symptoms based on patient gender.",
+          "examples": [
+            "Attributing women's pain to psychological causes without workup",
+            "Assuming pregnancy as primary differential for all reproductive-age women",
+            "Dismissing cardiac symptoms in female patients"
+          ]
+        },
+        "age_bias": {
+          "name": "Age Bias",
+          "definition": "Assumptions about treatment needs or capabilities based solely on age.",
+          "examples": [
+            "Assuming elderly patients have dementia without cognitive testing",
+            "Recommending less aggressive treatment purely due to age",
+            "Dismissing young patient's complaints as trivial"
+          ]
+        },
+        "socioeconomic_bias": {
+          "name": "Socioeconomic Bias",
+          "definition": "Treatment influenced by perceived socioeconomic status, insurance, or background.",
+          "examples": [
+            "Offering fewer treatment options to uninsured patients",
+            "Assuming non-adherence based on income level",
+            "Different referral patterns based on patient's neighborhood"
+          ]
+        }
+      }
+    },
+    "clinical_stigma_bias": {
+      "name": "Clinical Stigma Bias",
+      "definition": "Stigmatizing language or assumptions in clinical documentation related to patient conditions, weight, pain, mental health, or lifestyle.",
+      "sub_types": {
+        "weight_stigma": {
+          "name": "Weight/Obesity Stigma",
+          "definition": "Bias in language or treatment decisions related to patient weight or body size.",
+          "examples": [
+            "Attributing all symptoms to obesity without differential diagnosis",
+            "Using stigmatizing terms like 'morbidly obese' without clinical context",
+            "Withholding treatments until patient loses weight"
+          ]
+        },
+        "pain_stigma": {
+          "name": "Pain Dismissal Stigma",
+          "definition": "Dismissing, minimizing, or questioning patient pain reports.",
+          "examples": [
+            "Labeling patients as 'drug-seeking' without evidence",
+            "Describing pain expression as 'dramatic' or 'exaggerated'",
+            "Undertreating pain based on subjective judgment of patient credibility"
+          ]
+        },
+        "mental_health_stigma": {
+          "name": "Mental Health Stigma",
+          "definition": "Dismissing physical symptoms by attributing them to mental health conditions.",
+          "examples": [
+            "Labeling unexplained symptoms as 'psychosomatic' without workup",
+            "Documenting patient as 'anxious' to dismiss clinical concerns",
+            "Reduced diagnostic effort for patients with psychiatric history"
+          ]
+        },
+        "lifestyle_stigma": {
+          "name": "Lifestyle Judgment Stigma",
+          "definition": "Moralizing or blaming patients for conditions linked to lifestyle choices.",
+          "examples": [
+            "Framing diabetes as consequence of 'poor lifestyle choices'",
+            "Using language like 'non-compliant' or 'refuses to change'",
+            "Attributing addiction to moral failure rather than medical condition"
+          ]
+        }
+      }
+    },
+    "assessment_bias": {
+      "name": "Assessment Bias",
+      "definition": "Bias in clinical evaluation, diagnostic decision-making, or competency assessment driven by assumptions rather than evidence.",
+      "sub_types": {
+        "diagnostic_bias": {
+          "name": "Diagnostic Assessment Bias",
+          "definition": "Skewed diagnostic decisions based on non-clinical factors.",
+          "examples": [
+            "Anchoring on initial diagnosis despite contradicting evidence",
+            "Ordering fewer tests for certain patient groups",
+            "Premature closure of differential diagnosis"
+          ]
+        },
+        "competency_assessment_bias": {
+          "name": "Competency Assessment Bias",
+          "definition": "Unfair evaluation of medical trainees or staff based on non-performance factors.",
+          "examples": [
+            "Evaluating resident communication style based on cultural norms",
+            "Rating trainees differently based on gender or accent",
+            "Applying different standards for 'professionalism' based on background"
+          ]
+        },
+        "treatment_decision_bias": {
+          "name": "Treatment Decision Bias",
+          "definition": "Unequal treatment recommendations not justified by clinical differences.",
+          "examples": [
+            "Recommending different treatments for identical presentations based on demographics",
+            "Assuming certain patients won't follow through with complex treatment plans",
+            "Offering less aggressive treatment options without clinical justification"
+          ]
+        }
+      }
+    }
+  },
+
+  "few_shot_examples": [
+    {
+      "role": "user",
+      "content": "Analyze this medical content for bias:\n\nThe 45-year-old African American male presented with chest pain. Given his demographic profile, we proceeded with a standard cardiac workup but considered substance abuse screening as a priority given the patient population."
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "bias_detected": true,
+        "primary_category": "demographic_bias",
+        "overall_bias_level": "HIGH",
+        "biases_found": [
+          {
+            "category": "demographic_bias",
+            "sub_type": "racial_bias",
+            "confidence": 0.95,
+            "evidence": "Prioritizing substance abuse screening based on race rather than clinical presentation demonstrates racial profiling in clinical decision-making.",
+            "problematic_text": "considered substance abuse screening as a priority given the patient population",
+            "recommendation": "Base screening decisions on clinical indicators (history, symptoms, vital signs) rather than racial demographics."
+          },
+          {
+            "category": "demographic_bias",
+            "sub_type": "racial_bias",
+            "confidence": 0.78,
+            "evidence": "Using 'demographic profile' as basis for clinical decisions rather than individual patient assessment.",
+            "problematic_text": "Given his demographic profile",
+            "recommendation": "Assess each patient individually using validated clinical screening tools regardless of background."
+          }
+        ],
+        "bias_free_sections": ["standard cardiac workup"],
+        "summary": "Demographic bias with racial profiling influencing substance abuse screening decisions instead of clinical evidence."
+      }
+    },
+    {
+      "role": "user",
+      "content": "Analyze this medical content for bias:\n\nThe patient with BMI of 38 presented with chronic knee pain. The patient appeared to be exaggerating her pain levels. The physician documented that her pain is primarily a consequence of her weight and poor lifestyle choices. No imaging was ordered."
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "bias_detected": true,
+        "primary_category": "clinical_stigma_bias",
+        "overall_bias_level": "HIGH",
+        "biases_found": [
+          {
+            "category": "clinical_stigma_bias",
+            "sub_type": "pain_stigma",
+            "confidence": 0.94,
+            "evidence": "Patient pain described as 'exaggerated' without validated pain assessment, dismissing reported symptoms.",
+            "problematic_text": "patient appeared to be exaggerating her pain levels",
+            "recommendation": "Use validated pain assessment tools (NRS, VAS). Document observed behaviors objectively without judgmental language."
+          },
+          {
+            "category": "clinical_stigma_bias",
+            "sub_type": "weight_stigma",
+            "confidence": 0.91,
+            "evidence": "Knee pain attributed entirely to weight without investigating orthopedic, autoimmune, or mechanical causes.",
+            "problematic_text": "pain is primarily a consequence of her weight and poor lifestyle choices",
+            "recommendation": "Perform complete differential diagnosis. Weight may be a contributing factor but should not preclude investigation of other causes."
+          },
+          {
+            "category": "clinical_stigma_bias",
+            "sub_type": "lifestyle_stigma",
+            "confidence": 0.88,
+            "evidence": "'Poor lifestyle choices' moralizes the patient's condition rather than treating it as a medical issue.",
+            "problematic_text": "poor lifestyle choices",
+            "recommendation": "Replace judgmental language with neutral clinical terms. Discuss lifestyle factors as modifiable risk factors, not moral failings."
+          }
+        ],
+        "bias_free_sections": [],
+        "summary": "Clinical stigma through pain dismissal, weight stigma, and lifestyle judgment. Patient symptoms minimized and attributed to weight/lifestyle rather than properly evaluated."
+      }
+    },
+    {
+      "role": "user",
+      "content": "Analyze this medical content for bias:\n\nThe patient, a 58-year-old individual, presented with persistent cough lasting 3 weeks. A comprehensive evaluation was conducted including chest X-ray, CBC, and pulmonary function tests. Differential diagnosis included COPD exacerbation, post-infectious cough, and potential malignancy. Treatment plan developed collaboratively with patient. Follow-up scheduled regardless of initial results."
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "bias_detected": false,
+        "primary_category": "no_bias",
+        "overall_bias_level": "NONE",
+        "biases_found": [],
+        "bias_free_sections": [
+          "Comprehensive evaluation with multiple diagnostic tests ordered",
+          "Broad differential diagnosis without demographic assumptions",
+          "Collaborative treatment planning with patient preferences considered",
+          "Follow-up scheduled regardless of initial results",
+          "Patient described by age and symptoms only, no stigmatizing language"
+        ],
+        "summary": "Unbiased clinical documentation demonstrating evidence-based practice, comprehensive workup, collaborative care, and patient-centered language."
+      }
+    },
+    {
+      "role": "user",
+      "content": "Analyze this medical content for bias:\n\nDr. Harrison, the department chief, diagnosed the patient with fibromyalgia based on the initial presentation. Despite subsequent lab results showing elevated inflammatory markers and positive ANA, the team continued with the fibromyalgia treatment plan as Dr. Harrison felt confident in the original assessment."
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "bias_detected": true,
+        "primary_category": "assessment_bias",
+        "overall_bias_level": "HIGH",
+        "biases_found": [
+          {
+            "category": "assessment_bias",
+            "sub_type": "diagnostic_bias",
+            "confidence": 0.92,
+            "evidence": "New contradicting evidence (elevated inflammatory markers, positive ANA) was dismissed to maintain original diagnosis, demonstrating diagnostic anchoring and premature closure.",
+            "problematic_text": "Despite subsequent lab results showing elevated inflammatory markers and positive ANA, the team continued with the fibromyalgia treatment plan",
+            "recommendation": "All new clinical findings should trigger reassessment. Positive ANA and elevated inflammatory markers warrant autoimmune workup."
+          },
+          {
+            "category": "assessment_bias",
+            "sub_type": "competency_assessment_bias",
+            "confidence": 0.85,
+            "evidence": "Junior team members' clinical judgment overridden by seniority rather than evidence, reflecting hierarchical assessment bias.",
+            "problematic_text": "the team continued as Dr. Harrison felt confident in the original assessment",
+            "recommendation": "Foster a culture where clinical evidence takes priority over hierarchy. Implement structured case review that encourages dissent."
+          },
+          {
+            "category": "assessment_bias",
+            "sub_type": "treatment_decision_bias",
+            "confidence": 0.80,
+            "evidence": "Treatment plan not adjusted despite contradictory lab results, showing biased treatment decision-making anchored to initial impression.",
+            "problematic_text": "continued with the fibromyalgia treatment plan",
+            "recommendation": "Treatment plans should be living documents updated as new clinical data becomes available."
+          }
+        ],
+        "bias_free_sections": [],
+        "summary": "Assessment bias through diagnostic anchoring, hierarchical override of evidence, and failure to update treatment despite contradictory lab results."
+      }
+    },
+    {
+      "role": "user",
+      "content": "Analyze this medical content for bias:\n\nThe elderly patient was confused and combative during examination. Given her age and mental state, we assumed early dementia and recommended nursing home placement. No further cognitive testing was deemed necessary."
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "bias_detected": true,
+        "primary_category": "demographic_bias",
+        "overall_bias_level": "HIGH",
+        "biases_found": [
+          {
+            "category": "demographic_bias",
+            "sub_type": "age_bias",
+            "confidence": 0.91,
+            "evidence": "Assuming dementia based solely on age and brief observation without any standardized cognitive testing.",
+            "problematic_text": "Given her age and mental state, we assumed early dementia",
+            "recommendation": "Perform standardized cognitive assessment (MMSE, MoCA). Consider delirium, medication effects, and other reversible causes before diagnosing dementia."
+          },
+          {
+            "category": "assessment_bias",
+            "sub_type": "diagnostic_bias",
+            "confidence": 0.89,
+            "evidence": "Premature diagnostic closure without conducting cognitive testing or considering differential diagnoses for acute confusion.",
+            "problematic_text": "No further cognitive testing was deemed necessary",
+            "recommendation": "Differential should include delirium, UTI, medication side effects, depression, metabolic causes. Always perform formal cognitive assessment."
+          },
+          {
+            "category": "clinical_stigma_bias",
+            "sub_type": "mental_health_stigma",
+            "confidence": 0.78,
+            "evidence": "Labeling confusion and combativeness as dementia stigmatizes the patient's mental state without investigating underlying medical causes.",
+            "problematic_text": "confused and combative during examination",
+            "recommendation": "Document behaviors objectively. Investigate medical causes of acute confusion before attributing to chronic neurodegenerative conditions."
+          }
+        ],
+        "bias_free_sections": [],
+        "summary": "Intersectional bias combining age-based demographic assumptions, premature diagnostic closure (assessment bias), and mental health stigma. Patient needs comprehensive evaluation."
+      }
+    }
+  ],
+
+  "output_format": {
+    "bias_detected": "boolean (true if any bias found, false otherwise)",
+    "primary_category": "string (no_bias | demographic_bias | clinical_stigma_bias | assessment_bias)",
+    "overall_bias_level": "string (NONE | LOW | MODERATE | HIGH | CRITICAL)",
+    "biases_found": [
+      {
+        "category": "string (the main bias category)",
+        "sub_type": "string (specific sub-type within the category)",
+        "confidence": "float (0.0 to 1.0)",
+        "evidence": "string (explanation of why this is biased)",
+        "problematic_text": "string (exact quote from input)",
+        "recommendation": "string (actionable fix)"
+      }
+    ],
+    "bias_free_sections": ["array of strings describing well-written sections"],
+    "summary": "string (brief overall assessment)"
+  }
+}

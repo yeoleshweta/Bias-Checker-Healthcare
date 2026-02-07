@@ -1,22 +1,24 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Roboto, Merriweather } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const inter = Inter({
+const roboto = Roboto({
+  weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
   variable: "--font-sans",
 });
 
-const plusJakarta = Plus_Jakarta_Sans({
+const merriweather = Merriweather({
+  weight: ["300", "400", "700", "900"],
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-serif",
 });
 
 export const metadata: Metadata = {
-  title: "ABIM BiasGuard - Healthcare Bias Detection",
+  title: "ABIM AI Bias Checker",
   description:
-    "AI-powered bias detection for ABIM exam vignettes and clinical feedback narratives",
+    "A Synthetic Dataset and Transformer-Based Classifier for Detecting Bias",
 };
 
 export default function RootLayout({
@@ -27,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${plusJakarta.variable} font-sans antialiased bg-background text-foreground`}
+        className={`${roboto.variable} ${merriweather.variable} font-serif antialiased bg-background text-foreground`}
         suppressHydrationWarning
       >
         <ThemeProvider
