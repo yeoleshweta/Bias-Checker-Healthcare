@@ -22,9 +22,8 @@ export default function AnalyzePage() {
             Comprehensive <span className="gradient-text">Bias Analysis</span>
           </h1>
           <p className="text-xl text-neutral-500 dark:text-neutral-400 font-medium leading-relaxed">
-            Input clinical vignettes or trainee evaluations below. Our system
-            will analyze the text for 7 types of bias and provide actionable
-            revision suggestions.
+            Input clinical vignettes below. Our system will analyze the text for
+            7 types of bias and provide actionable revision suggestions.
           </p>
         </div>
 

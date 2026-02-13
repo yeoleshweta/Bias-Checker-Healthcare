@@ -56,7 +56,7 @@ export interface BiasAnalysisResult {
   num_biases?: number;
 }
 
-export type SourceType = "vignette" | "feedback";
+export type SourceType = "vignette";
 
 export interface Example {
   id: string;

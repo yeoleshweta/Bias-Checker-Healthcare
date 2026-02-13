@@ -42,7 +42,7 @@ const biasTypes = [
     name: "Assessment Bias",
     color: "bg-purple-100 border-purple-300 text-purple-800",
     description:
-      "Biased evaluation framing in trainee or candidate assessment that lacks objectivity or constructive feedback.",
+      "Biased evaluation framing in clinical assessments or case reviews that lacks objectivity.",
     examples: [
       "Resident showed unprofessional behavior and poor judgment.",
       "Candidate lacks competence in all areas.",

@@ -9,19 +9,19 @@ interface ArtifactConsoleProps {
   onAnalyze: (text: string, type: SourceType) => void;
   isLoading: boolean;
   initialText?: string;
+  isOffline?: boolean;
 }
 
 export default function ArtifactConsole({
   onAnalyze,
   isLoading,
   initialText = "",
+  isOffline = false,
 }: ArtifactConsoleProps) {
   const [text, setText] = useState(initialText);
-  const [sourceType, setSourceType] = useState<SourceType>("vignette");
-
   const handleAnalyze = () => {
     if (text.trim()) {
-      onAnalyze(text, sourceType);
+      onAnalyze(text, "vignette");
     }
   };
 
@@ -38,33 +38,9 @@ export default function ArtifactConsole({
           Artifact Analysis Console
         </h2>
         <p className="text-lg text-neutral-500 dark:text-neutral-400 font-medium">
-          Input clinical vignettes or feedback narratives for real-time bias
-          detection against ABIM standards.
+          Input clinical vignettes for real-time bias detection against ABIM
+          standards.
         </p>
-      </div>
-
-      {/* Source Type Toggle */}
-      <div className="flex p-1.5 bg-neutral-100 dark:bg-neutral-900 rounded-2xl w-fit mb-8 border border-neutral-200 dark:border-neutral-800">
-        <button
-          onClick={() => setSourceType("vignette")}
-          className={`px-8 py-3 rounded-xl text-sm font-bold transition-all-300 ${
-            sourceType === "vignette"
-              ? "bg-white dark:bg-neutral-800 text-primary shadow-lg shadow-primary/5 border border-primary/20 dark:border-primary/40"
-              : "text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-100"
-          }`}
-        >
-          Clinical Vignette
-        </button>
-        <button
-          onClick={() => setSourceType("feedback")}
-          className={`px-8 py-3 rounded-xl text-sm font-bold transition-all-300 ${
-            sourceType === "feedback"
-              ? "bg-white dark:bg-neutral-800 text-primary shadow-lg shadow-primary/5 border border-primary/20 dark:border-primary/40"
-              : "text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-100"
-          }`}
-        >
-          Clinical Feedback
-        </button>
       </div>
 
       {/* Text Area */}
@@ -80,10 +56,19 @@ export default function ArtifactConsole({
         </div>
       </div>
 
-      <div className="flex items-center justify-end mt-10">
+      <div className="flex items-center justify-between mt-10">
+        <div className="text-sm font-medium">
+          {isOffline && (
+            <span className="text-red-500 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+              Analysis Engine is currently offline. Please ensure the backend is
+              running.
+            </span>
+          )}
+        </div>
         <Button
           onClick={handleAnalyze}
-          disabled={!text.trim() || isLoading}
+          disabled={!text.trim() || isLoading || isOffline}
           size="lg"
           className="px-12 h-16 shadow-premium rounded-2xl"
         >
@@ -93,7 +78,7 @@ export default function ArtifactConsole({
               Processing diagnostics...
             </span>
           ) : (
-            <>Start Analysis Engine</>
+            <>{isOffline ? "Engine Offline" : "Start Analysis Engine"}</>
           )}
         </Button>
       </div>

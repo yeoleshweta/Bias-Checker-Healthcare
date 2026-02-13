@@ -16,62 +16,54 @@ export default function AuditScore({
   label,
 }: AuditScoreProps) {
   return (
-    <div className="premium-card p-8 md:p-10 bg-white dark:bg-neutral-800/50 rounded-3xl">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-        {/* Audit Score */}
-        <div className="text-center group">
-          <p className="text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-4">
-            Integrity Score
-          </p>
-          <div className="text-6xl font-display font-extrabold text-neutral-900 dark:text-white leading-none group-hover:text-primary transition-all-300">
+    <div className="premium-card bg-white dark:bg-neutral-800/50 rounded-3xl h-full flex flex-col overflow-hidden">
+      {/* Top Section: Score & Label */}
+      <div className="p-8 bg-gradient-to-b from-neutral-50 to-white dark:from-neutral-800 dark:to-neutral-900 border-b border-neutral-100 dark:border-neutral-700 text-center flex-grow flex flex-col justify-center">
+        <p className="text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-4">
+          Integrity Score
+        </p>
+        <div className="relative inline-block">
+          <div className="text-7xl font-display font-extrabold text-neutral-900 dark:text-white leading-none tracking-tighter">
             {score}
           </div>
-          <p className="text-[10px] font-bold text-neutral-400 mt-4 uppercase tracking-[0.2em]">
-            Scale: 1.0 - 10.0
-          </p>
+          <span className="absolute -top-2 -right-4 text-xs font-bold text-neutral-400">
+            /10
+          </span>
         </div>
 
-        {/* Compliance Rating */}
-        <div className="text-center md:border-x border-neutral-100 dark:border-neutral-700 px-6">
-          <p className="text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-4">
-            Audited Policy
-          </p>
-          <div className="flex items-center justify-center h-16">
-            <span
-              className={`text-2xl font-display font-extrabold tracking-tight ${
-                score >= 7
-                  ? "text-success"
-                  : score >= 4
-                    ? "text-warning"
-                    : "text-danger"
-              }`}
-            >
-              {rating}
-            </span>
-          </div>
-        </div>
-
-        {/* Confidence */}
-        <div className="text-center">
-          <p className="text-xs font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-4">
-            ML Certainty
-          </p>
-          <div className="text-4xl font-display font-extrabold text-primary leading-none">
-            {Math.round(confidence * 100)}%
-          </div>
-          <p className="text-[10px] font-bold text-neutral-400 mt-4 uppercase tracking-widest">
-            Cross-Validated
-          </p>
+        <div className="mt-6 flex justify-center">
+          <Badge label={label} />
         </div>
       </div>
 
-      {/* Bias Label Badge */}
-      <div className="mt-10 pt-10 border-t border-neutral-100 dark:border-neutral-700">
-        <div className="flex items-center justify-between">
-          <span className="text-sm font-bold text-neutral-500 dark:text-neutral-400 uppercase tracking-widest">
-            Diagnostic Category:
+      {/* Bottom Section: Secondary Metrics */}
+      <div className="p-6 flex flex-col gap-3 bg-neutral-50/50 dark:bg-black/20">
+        {/* Compliance Rating */}
+        <div className="flex items-center justify-between p-4 rounded-2xl bg-white dark:bg-neutral-800/50 border border-neutral-100 dark:border-neutral-700/50 shadow-sm">
+          <span className="text-[10px] font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
+            Policy
           </span>
-          <Badge label={label} />
+          <span
+            className={`text-base font-bold ${
+              score >= 7
+                ? "text-success"
+                : score >= 4
+                  ? "text-warning"
+                  : "text-danger"
+            }`}
+          >
+            {rating}
+          </span>
+        </div>
+
+        {/* Confidence */}
+        <div className="flex items-center justify-between p-4 rounded-2xl bg-white dark:bg-neutral-800/50 border border-neutral-100 dark:border-neutral-700/50 shadow-sm">
+          <span className="text-[10px] font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-wider">
+            Certainty
+          </span>
+          <span className="text-base font-bold text-primary">
+            {Math.round(confidence * 100)}%
+          </span>
         </div>
       </div>
     </div>

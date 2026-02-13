@@ -3,83 +3,112 @@
 import React from "react";
 import Link from "next/link";
 import BiasChecker from "@/components/BiasChecker";
+import RoBERTaAnalyzer from "@/components/analyzers/RoBERTaAnalyzer";
+import TrainingCurveChart from "@/components/charts/TrainingCurveChart";
+import ModelComparisonChart from "@/components/charts/ModelComparisonChart";
+import DatasetDistribution from "@/components/charts/DatasetDistribution";
+import FewShotPerformance from "@/components/charts/FewShotPerformance";
 import { Download, FileText, Share2 } from "lucide-react";
 
 export default function ResearchPage() {
   return (
     <article className="max-w-4xl mx-auto px-6 py-12 md:py-20 selection:bg-primary/10">
-      {/* Header */}
+      {/* ================================================================ */}
+      {/* HEADER                                                          */}
+      {/* ================================================================ */}
       <header className="mb-12 border-b border-border pb-12">
-        <div className="mb-6">
-          <h1 className="text-3xl md:text-5xl font-sans font-bold leading-tight mb-4">
-            ABIM AI Bias Checker: A Transformer-Based Classifier for Detecting
-            Bias
+        <div className="mb-8">
+          <h1 className="text-3xl md:text-5xl font-sans font-bold leading-tight mb-6 text-neutral-900 dark:text-neutral-100">
+            Development of an AI-Powered Medical Bias Detection System for
+            Clinical Vignettes and Healthcare Documentation
           </h1>
-          <div className="flex flex-wrap gap-4 text-sm text-neutral-600 dark:text-neutral-400 font-sans">
-            <div className="flex items-center gap-2">
-              <span className="font-bold text-foreground">Shweta Sharma</span>
-              <span className="bg-neutral-100 dark:bg-neutral-800 px-2 py-0.5 rounded text-xs border border-neutral-200 dark:border-neutral-700">
-                ABIM
-              </span>
-            </div>
-            <span className="text-neutral-300">|</span>
-            <span>February 6, 2026</span>
+
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm md:text-base font-sans text-neutral-600 dark:text-neutral-400">
+            <span className="font-semibold text-neutral-900 dark:text-neutral-200">
+              Shweta Sharma
+            </span>
+            <span className="text-neutral-300 dark:text-neutral-600">|</span>
+            <span className="text-primary font-medium">
+              A Data Science Project
+            </span>
+            <span className="text-neutral-300 dark:text-neutral-600">|</span>
+            <span>February 2026</span>
+            <span className="text-neutral-300 dark:text-neutral-600">|</span>
+            <span className="bg-primary/10 text-primary px-2 py-0.5 rounded text-xs font-bold border border-primary/20">
+              ABIM Standards
+            </span>
           </div>
         </div>
 
         <div className="flex gap-3">
           <Link
-            href="#interactive-demo"
+            href="#experiment-2-analyzer"
             className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-sans font-medium bg-primary text-white hover:bg-primary-hover rounded transition-colors"
           >
-            Live Demo
+            RoBERTa Demo
+          </Link>
+          <Link
+            href="#experiment-3-analyzer"
+            className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-sans font-medium bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:opacity-90 rounded transition-colors"
+          >
+            Few-Shot Demo
           </Link>
           <button className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-sans font-medium bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded transition-colors">
             <FileText size={14} /> View PDF
           </button>
-          <button className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-sans font-medium bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded transition-colors">
-            <Download size={14} /> Dataset
-          </button>
+          <a
+            href="https://github.com/yeoleshweta/Bias-Checker-Healthcare.git"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-sans font-medium bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded transition-colors text-neutral-900 dark:text-neutral-100"
+          >
+            <Download size={14} /> Synthetic Dataset
+          </a>
           <button className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-sans font-medium bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded transition-colors">
             <Share2 size={14} /> Cite
           </button>
         </div>
       </header>
 
-      {/* Abstract */}
+      {/* ================================================================ */}
+      {/* ABSTRACT                                                        */}
+      {/* ================================================================ */}
       <section className="bg-neutral-50 dark:bg-neutral-900/50 p-6 md:p-8 rounded-lg border border-neutral-100 dark:border-neutral-800 mb-12">
         <h3 className="text-sm font-sans font-bold uppercase tracking-wider text-neutral-500 mb-3 mt-0">
           Abstract
         </h3>
-        <p className="text-base md:text-lg leading-relaxed mb-4">
-          Bias in high-stakes medical assessment ecosystems can manifest in exam
-          vignette framing, clinical documentation language, and narrative
-          evaluations of trainees. This work presents{" "}
-          <strong>ABIM AI Bias Checker</strong>, an end-to-end framework to:
+        <p className="text-base md:text-lg leading-relaxed mb-4 italic">
+          This research presents the development and evaluation of an AI-powered
+          medical bias detection system designed to identify and classify biases
+          in clinical vignettes, examination content, and healthcare
+          documentation. The study employed a multi-phase experimental approach,
+          beginning with the generation of 3,500 synthetic samples across seven
+          bias categories, followed by comparative analysis of fine-tuned
+          transformer models (RoBERTa-base and Bio-ClinicalBERT), and
+          culminating in the implementation of a few-shot prompting approach
+          using large language models (GPT-4o and Gemini). Our findings reveal
+          that while fine-tuned models achieved high accuracy (up to 98%) on the
+          synthetic dataset, they exhibited significant overfitting behavior and
+          struggled with semantic overlap between bias categories. Reducing the
+          classification task from seven to three consolidated bias categories
+          substantially improved model discrimination. Ultimately, the few-shot
+          prompting approach demonstrated superior generalization capabilities
+          and was deployed as an end-to-end bias detection pipeline, serving as
+          an explainability layer for AI audits in healthcare settings. This
+          work contributes to the growing field of algorithmic fairness in
+          medicine by providing both a comprehensive taxonomy of medical biases
+          and a practical tool for bias detection and mitigation.
         </p>
-        <ul className="list-disc list-inside space-y-1 mb-4 ml-2">
-          <li>
-            Define a healthcare-specific bias taxonomy aligned with ABIM-style
-            internal medicine contexts.
-          </li>
-          <li>
-            Fine-tune transformer-based classifiers (BERT/RoBERTa) to detect
-            bias categories.
-          </li>
-        </ul>
-        <p className="text-base md:text-lg leading-relaxed mb-0">
-          The resulting dataset includes seven labels spanning demographic bias,
-          clinical stigma, assessment bias, documentation bias, structural bias,
-          algorithmic bias, and neutral clinical text. We describe model design
-          decisions (partial layer freezing and task-specific heads), evaluation
-          protocols, and practical lessons learned from tooling
-          incompatibilities during development. This paper is intended as a
-          reproducible template for an &quot;AI assurance&quot; workflow for
-          medical assessment organizations.
+        <p className="text-base md:text-lg leading-relaxed mb-0 italic">
+          <span className="font-bold">Keywords:</span> Medical bias detection,
+          clinical NLP, transformer models, few-shot prompting, algorithmic
+          fairness, healthcare AI auditing
         </p>
       </section>
 
-      {/* Intro */}
+      {/* ================================================================ */}
+      {/* 1. INTRODUCTION                                                 */}
+      {/* ================================================================ */}
       <section className="mb-16">
         <h2>1. Introduction</h2>
         <p>
@@ -113,33 +142,9 @@ export default function ResearchPage() {
         </ul>
       </section>
 
-      {/* Interactive Figure */}
-      <section
-        id="interactive-demo"
-        className="my-16 border rounded-xl overflow-hidden shadow-sm bg-neutral-50 dark:bg-neutral-900"
-      >
-        <div className="bg-white dark:bg-black p-4 border-b text-xs font-mono text-neutral-500 uppercase tracking-wider flex justify-between items-center">
-          <span>Figure 1: Interactive Prototype</span>
-          <span className="text-green-600 flex items-center gap-1">
-            • Live Model
-          </span>
-        </div>
-        <div className="p-0">
-          {/* We are embedding the cleaner BiasChecker here. 
-                Ideally, BiasChecker should be refactored to remove its own "Hero" titles if we want a pure component.
-                For now, we will use it and the user can see it works.
-            */}
-          <BiasChecker />
-        </div>
-        <div className="p-4 bg-neutral-50 dark:bg-neutral-900 border-t text-sm text-neutral-600 dark:text-neutral-400 italic">
-          <strong>Figure 1.</strong> The deployed inference interface allowing
-          real-time bias detection on clinical vignettes. The model predicts one
-          of 7 bias categories and provides a confidence score and
-          explainability rationale.
-        </div>
-      </section>
-
-      {/* Background */}
+      {/* ================================================================ */}
+      {/* 2. BACKGROUND                                                   */}
+      {/* ================================================================ */}
       <section className="mb-16">
         <h2>2. Background and Motivation</h2>
         <h3>2.1 Bias in healthcare and medical evaluation</h3>
@@ -157,7 +162,9 @@ export default function ResearchPage() {
         </p>
       </section>
 
-      {/* Taxonomy */}
+      {/* ================================================================ */}
+      {/* 3. TAXONOMY                                                     */}
+      {/* ================================================================ */}
       <section className="mb-16">
         <h2>3. ABIM Bias Taxonomy (7 Labels)</h2>
         <p>
@@ -274,14 +281,64 @@ export default function ResearchPage() {
         </div>
       </section>
 
-      {/* Model Architecture */}
+      {/* ================================================================ */}
+      {/* EXPERIMENT 1: SYNTHETIC DATASET                                 */}
+      {/* ================================================================ */}
       <section className="mb-16">
-        <h2>4. Model Architecture and Training</h2>
+        <div className="flex items-center gap-3 mb-6">
+          <span className="px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold font-sans border border-amber-500/20">
+            EXPERIMENT 1
+          </span>
+          <h2 className="mb-0">Synthetic Dataset Generation</h2>
+        </div>
         <p>
-          We fine-tune pretrained transformers (BERT/RoBERTa) by attaching a
-          task-specific classification head to the pooled representation. We
-          experiment with <strong>partial layer freezing</strong> to stabilize
-          training and reduce overfitting on synthetic data.
+          We generated <strong>3,500 synthetic clinical vignettes</strong> using
+          GPT-4o, balanced across seven bias categories (500 samples each). Each
+          sample was designed to reflect realistic ABIM-style internal medicine
+          documentation, including patient histories, clinical assessments, and
+          feedback narratives.
+        </p>
+
+        <div className="my-8 p-6 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900/50">
+          <h4 className="text-sm font-sans font-bold uppercase tracking-wider text-neutral-500 mb-6">
+            Figure 1: Dataset Distribution (7 Categories)
+          </h4>
+          <DatasetDistribution />
+        </div>
+
+        <div className="flex p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg gap-3 my-6">
+          <span className="text-amber-600 font-bold shrink-0 font-sans text-sm">
+            ⚠️ Finding:
+          </span>
+          <p className="text-sm text-amber-900 dark:text-amber-200">
+            Initial training on all 7 categories revealed{" "}
+            <strong>significant semantic overlap</strong> between related
+            categories — particularly <em>documentation_bias</em> vs.{" "}
+            <em>clinical_stigma</em>, and
+            <em> structural_bias</em> vs. <em>algorithmic_bias</em>. This led to
+            high confusion rates and motivated the consolidation to{" "}
+            <strong>4 categories</strong> in Experiment 2.
+          </p>
+        </div>
+      </section>
+
+      {/* ================================================================ */}
+      {/* EXPERIMENT 2: FINE-TUNED TRANSFORMERS                           */}
+      {/* ================================================================ */}
+      <section className="mb-16">
+        <div className="flex items-center gap-3 mb-6">
+          <span className="px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-bold font-sans border border-blue-500/20">
+            EXPERIMENT 2
+          </span>
+          <h2 className="mb-0">Fine-Tuned Transformer Models</h2>
+        </div>
+        <p>
+          We fine-tuned pretrained transformers (RoBERTa-base and
+          Bio-ClinicalBERT) by attaching a task-specific classification head to
+          the pooled representation. We experimented with{" "}
+          <strong>partial layer freezing</strong> and{" "}
+          <strong>LoRA adapters</strong> to stabilize training and reduce
+          overfitting on synthetic data.
         </p>
 
         <h3>Training Configuration</h3>
@@ -302,27 +359,141 @@ export default function ResearchPage() {
             <strong>Learning Rate:</strong> 2e-5 to 5e-5
           </li>
         </ul>
+
+        {/* Training Curves Chart */}
+        <div className="my-8 p-6 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900/50">
+          <h4 className="text-sm font-sans font-bold uppercase tracking-wider text-neutral-500 mb-4">
+            Figure 2: RoBERTa Training Curves (4-Label, 6 Epochs)
+          </h4>
+          <TrainingCurveChart />
+          <p className="text-xs text-neutral-500 italic mt-3 font-sans">
+            Best checkpoint at Epoch 5 — Accuracy: 98.67%, Macro F1: 98.67%.
+            Slight degradation in Epoch 6 suggests early stopping was optimal.
+          </p>
+        </div>
+
+        {/* Model Comparison Chart */}
+        <div className="my-8 p-6 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900/50">
+          <h4 className="text-sm font-sans font-bold uppercase tracking-wider text-neutral-500 mb-6">
+            Figure 3: Model Comparison — Accuracy &amp; Macro F1
+          </h4>
+          <ModelComparisonChart />
+        </div>
+
+        <div className="flex p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg gap-3 my-6">
+          <span className="text-blue-600 font-bold shrink-0 font-sans text-sm">
+            💡 Key Finding:
+          </span>
+          <p className="text-sm text-blue-900 dark:text-blue-200">
+            Consolidating from 7 to <strong>4 bias categories</strong> (no_bias,
+            demographic_bias, clinical_stigma_bias, assessment_bias) improved
+            RoBERTa accuracy from 91.5% → <strong>98.67%</strong>. The 4-label
+            model with LoRA adapters is deployed below for interactive testing.
+          </p>
+        </div>
       </section>
 
-      {/* Results */}
+      {/* ================================================================ */}
+      {/* INTERACTIVE: RoBERTa ANALYZER                                   */}
+      {/* ================================================================ */}
+      <section id="experiment-2-analyzer" className="my-16 scroll-mt-20">
+        <div className="border rounded-xl overflow-hidden shadow-sm bg-neutral-50 dark:bg-neutral-900">
+          <div className="bg-white dark:bg-black p-4 border-b text-xs font-mono text-neutral-500 uppercase tracking-wider flex justify-between items-center">
+            <span>Figure 4: Fine-Tuned RoBERTa Classifier (Interactive)</span>
+            <span className="text-blue-600 flex items-center gap-1">
+              ● Live Model
+            </span>
+          </div>
+          <div className="p-0">
+            <RoBERTaAnalyzer />
+          </div>
+          <div className="p-4 bg-neutral-50 dark:bg-neutral-900 border-t text-sm text-neutral-600 dark:text-neutral-400 italic">
+            <strong>Figure 4.</strong> Interactive fine-tuned RoBERTa classifier
+            with LoRA adapters. Classifies clinical text into 4 bias categories
+            with confidence scoring and AI-generated explanations.
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================ */}
+      {/* EXPERIMENT 3: FEW-SHOT PROMPTING                                */}
+      {/* ================================================================ */}
       <section className="mb-16">
-        <h2>5. Results</h2>
-        <div className="flex p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-md gap-3 mb-6">
-          <span className="text-yellow-600 font-bold shrink-0">TODO:</span>
-          <span className="text-sm text-yellow-800 dark:text-yellow-200">
-            Insert final model performance metrics (Macro-F1, Accuracy) and
-            Confusion Matrix figure.
+        <div className="flex items-center gap-3 mb-6">
+          <span className="px-3 py-1 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 text-xs font-bold font-sans border border-purple-500/20">
+            EXPERIMENT 3
           </span>
+          <h2 className="mb-0">Few-Shot Prompting Approach</h2>
         </div>
         <p>
-          Preliminary results indicate strong performance in distinguishing
-          overt bias categories, with some confusion observed between{" "}
-          <em>documentation_bias</em> and <em>clinical_stigma</em>,
-          necessitating further refinement of label boundaries.
+          Building on the limitations of fine-tuned models (overfitting to
+          synthetic patterns, inability to explain predictions), we implemented
+          a <strong>few-shot prompting pipeline</strong> using GPT-4o. This
+          approach uses 5 curated example pairs spanning all bias categories,
+          enabling:
         </p>
+        <ul className="list-disc pl-6 space-y-2 mb-6 text-neutral-700 dark:text-neutral-300">
+          <li>
+            <strong>4 primary categories</strong> with{" "}
+            <strong>11 granular sub-types</strong>
+          </li>
+          <li>Multi-bias detection (intersectional analysis)</li>
+          <li>Evidence-based explanations with exact text citations</li>
+          <li>Actionable recommendations for bias mitigation</li>
+          <li>Confidence scores and severity ratings (NONE → CRITICAL)</li>
+        </ul>
+
+        {/* Few-Shot Performance */}
+        <div className="my-8 p-6 rounded-xl border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900/50">
+          <h4 className="text-sm font-sans font-bold uppercase tracking-wider text-neutral-500 mb-6">
+            Figure 5: Few-Shot Pipeline — Performance by Bias Category
+          </h4>
+          <FewShotPerformance />
+        </div>
+
+        <div className="flex p-4 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-lg gap-3 my-6">
+          <span className="text-purple-600 font-bold shrink-0 font-sans text-sm">
+            🏆 Result:
+          </span>
+          <p className="text-sm text-purple-900 dark:text-purple-200">
+            The few-shot approach demonstrated{" "}
+            <strong>superior generalization</strong> over fine-tuned models,
+            with the ability to detect <strong>intersectional biases</strong>,
+            provide granular sub-type classifications across 11 categories, and
+            generate human-readable explanations — making it suitable for
+            production AI auditing workflows.
+          </p>
+        </div>
       </section>
 
-      {/* Discussion */}
+      {/* ================================================================ */}
+      {/* INTERACTIVE: FEW-SHOT ANALYZER                                  */}
+      {/* ================================================================ */}
+      <section id="experiment-3-analyzer" className="my-16 scroll-mt-20">
+        <div className="border rounded-xl overflow-hidden shadow-sm bg-neutral-50 dark:bg-neutral-900">
+          <div className="bg-white dark:bg-black p-4 border-b text-xs font-mono text-neutral-500 uppercase tracking-wider flex justify-between items-center">
+            <span>
+              Figure 6: Few-Shot GPT-4o Bias Detection Pipeline (Interactive)
+            </span>
+            <span className="text-green-600 flex items-center gap-1">
+              ● Live Model
+            </span>
+          </div>
+          <div className="p-0">
+            <BiasChecker />
+          </div>
+          <div className="p-4 bg-neutral-50 dark:bg-neutral-900 border-t text-sm text-neutral-600 dark:text-neutral-400 italic">
+            <strong>Figure 6.</strong> The deployed few-shot prompting pipeline
+            allowing real-time bias detection on clinical vignettes. Detects 4
+            bias categories with 11 sub-types, provides evidence,
+            recommendations, and audit scoring.
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================ */}
+      {/* DISCUSSION                                                      */}
+      {/* ================================================================ */}
       <section className="mb-16">
         <h2>6. Discussion</h2>
         <p>
@@ -342,7 +513,9 @@ export default function ResearchPage() {
         </p>
       </section>
 
-      {/* Footer / Citation */}
+      {/* ================================================================ */}
+      {/* FOOTER / CITATION                                               */}
+      {/* ================================================================ */}
       <footer className="mt-20 pt-8 border-t border-dotted border-neutral-300 dark:border-neutral-700 text-sm text-neutral-500">
         <p className="mb-2 font-bold">Recommended Citation:</p>
         <p className="font-mono bg-neutral-100 dark:bg-neutral-800 p-3 rounded text-xs overflow-x-auto whitespace-pre-wrap">

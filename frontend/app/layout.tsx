@@ -16,9 +16,9 @@ const merriweather = Merriweather({
 });
 
 export const metadata: Metadata = {
-  title: "ABIM AI Bias Checker",
+  title: "Shweta Sharma | Bias-Checker Healthcare",
   description:
-    "A Synthetic Dataset and Transformer-Based Classifier for Detecting Bias",
+    "A Data Science Project: AI-Powered Medical Bias Detection System",
 };
 
 export default function RootLayout({
