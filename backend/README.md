@@ -61,6 +61,41 @@ docker build -t abim-bias-checker:latest .
 docker run -p 8000:8000 -v /path/to/models:/app/models -e MODEL_PATH=/app/models/your_model_path abim-bias-checker:latest
 ```
 
+### Option 3: Deployment to Fly.io
+
+The backend is configured for deployment on [Fly.io](https://fly.io) using the provided `fly.toml` and `Dockerfile`.
+
+1. **Install Flyctl**:
+
+   ```bash
+   brew install superfly/tap/flyctl
+   ```
+
+2. **Login to Fly**:
+
+   ```bash
+   fly auth login
+   ```
+
+3. **Deploy the application**:
+   Run this command from within the `backend` directory:
+
+   ```bash
+   fly deploy
+   ```
+
+   _Note: The deployment is configured for 4GB RAM and 2 CPUs in `fly.toml` to support the RoBERTa model load._
+
+4. **Set Environment Variables**:
+   Secrets like API keys should be set using fly secrets:
+
+   ```bash
+   fly secrets set OPENAI_API_KEY=your_key_here
+   ```
+
+5. **Scale as needed**:
+   The model requires sufficient memory (minimum 2GB recommended in `fly.toml`).
+
 ## API Endpoints
 
 ### Health Check
