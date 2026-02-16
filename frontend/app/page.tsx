@@ -55,9 +55,14 @@ export default function ResearchPage() {
           >
             Few-Shot Demo
           </Link>
-          <button className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-sans font-medium bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded transition-colors">
+          <a
+            href="/ABIM_bias_checker_report.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-sans font-medium bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded transition-colors text-neutral-900 dark:text-neutral-100"
+          >
             <FileText size={14} /> View PDF
-          </button>
+          </a>
           <a
             href="https://github.com/yeoleshweta/Bias-Checker-Healthcare.git"
             target="_blank"
@@ -66,9 +71,12 @@ export default function ResearchPage() {
           >
             <Download size={14} /> Synthetic Dataset
           </a>
-          <button className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-sans font-medium bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded transition-colors">
+          <Link
+            href="#citation"
+            className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-sans font-medium bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded transition-colors text-neutral-900 dark:text-neutral-100"
+          >
             <Share2 size={14} /> Cite
-          </button>
+          </Link>
         </div>
       </header>
 
@@ -577,7 +585,10 @@ export default function ResearchPage() {
       {/* ================================================================ */}
       {/* FOOTER / CITATION                                               */}
       {/* ================================================================ */}
-      <footer className="mt-20 pt-8 border-t border-dotted border-neutral-300 dark:border-neutral-700 text-sm text-neutral-500">
+      <footer
+        id="citation"
+        className="mt-20 pt-8 border-t border-dotted border-neutral-300 dark:border-neutral-700 text-sm text-neutral-500 scroll-mt-20"
+      >
         <p className="mb-2 font-bold">Recommended Citation For This Paper:</p>
         <p className="font-mono bg-neutral-100 dark:bg-neutral-800 p-3 rounded text-xs overflow-x-auto whitespace-pre-wrap">
           Sharma, S. (2026). ABIM AI Bias Checker: A Scalable Framework for
