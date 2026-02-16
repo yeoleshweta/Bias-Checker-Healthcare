@@ -2,13 +2,13 @@
 import React, { useEffect, useRef, useState } from "react";
 
 const categories = [
-  { label: "no_bias", samples: 500, color: "#22c55e", emoji: "✅" },
-  { label: "demographic_bias", samples: 500, color: "#ef4444", emoji: "👥" },
-  { label: "clinical_stigma", samples: 500, color: "#f97316", emoji: "🏥" },
-  { label: "assessment_bias", samples: 500, color: "#a855f7", emoji: "⚖️" },
-  { label: "algorithmic_bias", samples: 500, color: "#3b82f6", emoji: "🤖" },
-  { label: "documentation_bias", samples: 500, color: "#eab308", emoji: "📄" },
-  { label: "structural_bias", samples: 500, color: "#ec4899", emoji: "🏛️" },
+  { label: "no_bias", samples: 500, color: "#8ab598", emoji: "✅" },
+  { label: "demographic_bias", samples: 500, color: "#d49494", emoji: "👥" },
+  { label: "clinical_stigma", samples: 500, color: "#dcb08a", emoji: "🏥" },
+  { label: "assessment_bias", samples: 500, color: "#b3a5c9", emoji: "⚖️" },
+  { label: "algorithmic_bias", samples: 500, color: "#90a4c4", emoji: "🤖" },
+  { label: "documentation_bias", samples: 500, color: "#d4c988", emoji: "📄" },
+  { label: "structural_bias", samples: 500, color: "#c994ab", emoji: "🏛️" },
 ];
 
 export default function DatasetDistribution() {

@@ -8,6 +8,7 @@ import TrainingCurveChart from "@/components/charts/TrainingCurveChart";
 import ModelComparisonChart from "@/components/charts/ModelComparisonChart";
 import DatasetDistribution from "@/components/charts/DatasetDistribution";
 import FewShotPerformance from "@/components/charts/FewShotPerformance";
+import ApproachComparisonChart from "@/components/charts/ApproachComparisonChart";
 import { Download, FileText, Share2 } from "lucide-react";
 
 export default function ResearchPage() {
@@ -19,8 +20,9 @@ export default function ResearchPage() {
       <header className="mb-12 border-b border-border pb-12">
         <div className="mb-8">
           <h1 className="text-3xl md:text-5xl font-sans font-bold leading-tight mb-6 text-neutral-900 dark:text-neutral-100">
-            Development of an AI-Powered Medical Bias Detection System for
-            Clinical Vignettes and Healthcare Documentation
+            Development of an AI-Powered Medical Bias Detection and
+            Explainability System for Case Studies, Clinical Narratives, and
+            Evaluation Assessments
           </h1>
 
           <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm md:text-base font-sans text-neutral-600 dark:text-neutral-400">
@@ -80,24 +82,21 @@ export default function ResearchPage() {
         <p className="text-base md:text-lg leading-relaxed mb-4 italic">
           This research presents the development and evaluation of an AI-powered
           medical bias detection system designed to identify and classify biases
-          in clinical vignettes, examination content, and healthcare
-          documentation. The study employed a multi-phase experimental approach,
-          beginning with the generation of 3,500 synthetic samples across seven
-          bias categories, followed by comparative analysis of fine-tuned
-          transformer models (RoBERTa-base and Bio-ClinicalBERT), and
-          culminating in the implementation of a few-shot prompting approach
-          using large language models (GPT-4o and Gemini). Our findings reveal
-          that while fine-tuned models achieved high accuracy (up to 98%) on the
-          synthetic dataset, they exhibited significant overfitting behavior and
-          struggled with semantic overlap between bias categories. Reducing the
-          classification task from seven to three consolidated bias categories
-          substantially improved model discrimination. Ultimately, the few-shot
-          prompting approach demonstrated superior generalization capabilities
-          and was deployed as an end-to-end bias detection pipeline, serving as
-          an explainability layer for AI audits in healthcare settings. This
-          work contributes to the growing field of algorithmic fairness in
-          medicine by providing both a comprehensive taxonomy of medical biases
-          and a practical tool for bias detection and mitigation.
+          in medical case studies, clinical narratives, evaluation assessments,
+          and healthcare documentation. The study employed a multi-phase
+          experimental approach, beginning with the generation of 3,500
+          synthetic samples across seven bias categories, followed by
+          comparative analysis of fine-tuned transformer models (RoBERTa-base
+          and Bio-ClinicalBERT), and culminating in the implementation of a
+          few-shot prompting approach using large language models (GPT-4o and
+          Gemini). Our findings reveal that while fine-tuned models achieved
+          high accuracy (up to 98%), they struggled with semantic overlap and
+          domain generalization. Ultimately, the few-shot prompting approach
+          demonstrated superior performance and was deployed as an end-to-end
+          bias detection pipeline, acting as a core explainability layer for AI
+          audits and governance within internal medicine assessment systems.
+          This work provides both a comprehensive taxonomy and a practical
+          framework for scaling bias mitigation across diverse medical content.
         </p>
         <p className="text-base md:text-lg leading-relaxed mb-0 italic">
           <span className="font-bold">Keywords:</span> Medical bias detection,
@@ -125,19 +124,17 @@ export default function ResearchPage() {
           biased historical labels.
         </p>
         <p>
-          This paper describes the ABIM AI Bias Checker, a practical system for
-          developing a bias classifier tailored to ABIM-style internal medicine
-          contexts. The project combines:
+          This paper describes the ABIM AI Bias Checker, a robust framework for
+          detecting bias in medical narratives and assessments. Beyond clinical
+          vignettes, this system is designed to provide an explainability and
+          governance layer for:
         </p>
         <ul className="list-disc pl-6 space-y-2 mb-6 text-neutral-700 dark:text-neutral-300">
-          <li>A healthcare-specific bias taxonomy;</li>
+          <li>Medical research case studies and documentation;</li>
+          <li>Psychometric evaluation and assessment narratives;</li>
+          <li>AI-generated feedback and drafting systems;</li>
           <li>
-            Transformer-based multi-class text classifiers with partial layer
-            freezing;
-          </li>
-          <li>
-            An evaluation harness suitable for repeated testing and governance
-            workflows.
+            Cross-organizational AI audits for long-term algorithmic fairness.
           </li>
         </ul>
       </section>
@@ -155,7 +152,7 @@ export default function ResearchPage() {
           shown to produce systematic racial disparities when cost is used as a
           proxy for need [1]. Bias also appears in narrative evaluations and
           structured assessments through stereotyped expectations and
-          inequitable norms [2]. A practical ABIM-themed classifier must
+          inequitable norms [2, 5]. A practical ABIM-themed classifier must
           therefore capture both <em>language harms</em> (stigmatizing wording,
           stereotypes) and <em>system harms</em> (structural constraints,
           algorithmic scoring issues).
@@ -333,9 +330,9 @@ export default function ResearchPage() {
           <h2 className="mb-0">Fine-Tuned Transformer Models</h2>
         </div>
         <p>
-          We fine-tuned pretrained transformers (RoBERTa-base and
-          Bio-ClinicalBERT) by attaching a task-specific classification head to
-          the pooled representation. We experimented with{" "}
+          We fine-tuned pretrained transformers — RoBERTa-base [3] and
+          Bio-ClinicalBERT [2] — by attaching a task-specific classification
+          head to the pooled representation. We experimented with{" "}
           <strong>partial layer freezing</strong> and{" "}
           <strong>LoRA adapters</strong> to stabilize training and reduce
           overfitting on synthetic data.
@@ -428,7 +425,7 @@ export default function ResearchPage() {
         <p>
           Building on the limitations of fine-tuned models (overfitting to
           synthetic patterns, inability to explain predictions), we implemented
-          a <strong>few-shot prompting pipeline</strong> using GPT-4o. This
+          a <strong>few-shot prompting pipeline</strong> [4] using GPT-4o. This
           approach uses 5 curated example pairs spanning all bias categories,
           enabling:
         </p>
@@ -503,6 +500,9 @@ export default function ResearchPage() {
           mapping between a label and the text, supporting annotation
           calibration.
         </p>
+
+        <ApproachComparisonChart />
+
         <h3>Limitations</h3>
         <p>
           Synthetic data is not ground truth for real-world deployment. Common
@@ -514,13 +514,74 @@ export default function ResearchPage() {
       </section>
 
       {/* ================================================================ */}
+      {/* REFERENCES                                                      */}
+      {/* ================================================================ */}
+      <section className="mb-16 pt-12 border-t border-neutral-100 dark:border-neutral-800">
+        <h2 className="text-xl mb-8">Selected References</h2>
+        <div className="space-y-6">
+          <div className="flex gap-4 group">
+            <span className="text-neutral-400 font-mono text-sm shrink-0">
+              [1]
+            </span>
+            <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed group-hover:text-neutral-900 dark:group-hover:text-neutral-100 transition-colors">
+              Obermeyer, Z., Powers, B., Vogeli, C., &amp; Mullainathan, S.
+              (2019). Dissecting racial bias in an algorithm used to manage the
+              health of populations. <em>Science</em>, 366(6464), 447–453.
+            </p>
+          </div>
+          <div className="flex gap-4 group">
+            <span className="text-neutral-400 font-mono text-sm shrink-0">
+              [2]
+            </span>
+            <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed group-hover:text-neutral-900 dark:group-hover:text-neutral-100 transition-colors">
+              Alsentzer, E., Murphy, J., Boag, W., et al. (2019). Publicly
+              available clinical BERT embeddings. In{" "}
+              <em>Proceedings of the 2nd Clinical NLP Workshop</em> (pp. 72–78).
+              ACL.
+            </p>
+          </div>
+          <div className="flex gap-4 group">
+            <span className="text-neutral-400 font-mono text-sm shrink-0">
+              [3]
+            </span>
+            <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed group-hover:text-neutral-900 dark:group-hover:text-neutral-100 transition-colors">
+              Liu, Y., Ott, M., Goyal, N., et al. (2019). RoBERTa: A Robustly
+              Optimized BERT Pretraining Approach.{" "}
+              <em>arXiv preprint arXiv:1907.11692</em>.
+            </p>
+          </div>
+          <div className="flex gap-4 group">
+            <span className="text-neutral-400 font-mono text-sm shrink-0">
+              [4]
+            </span>
+            <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed group-hover:text-neutral-900 dark:group-hover:text-neutral-100 transition-colors">
+              Brown, T. B., Mann, B., Ryder, N., et al. (2020). Language Models
+              are Few-Shot Learners. In{" "}
+              <em>Advances in Neural Information Processing Systems</em> (Vol.
+              33).
+            </p>
+          </div>
+          <div className="flex gap-4 group">
+            <span className="text-neutral-400 font-mono text-sm shrink-0">
+              [5]
+            </span>
+            <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed group-hover:text-neutral-900 dark:group-hover:text-neutral-100 transition-colors">
+              Rotenstein, L. S., et al. (2021). Differences in Narrative
+              Evaluations of Internal Medicine Residents by Gender and Race.{" "}
+              <em>JAMA Network Open</em>, 4(9).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================ */}
       {/* FOOTER / CITATION                                               */}
       {/* ================================================================ */}
       <footer className="mt-20 pt-8 border-t border-dotted border-neutral-300 dark:border-neutral-700 text-sm text-neutral-500">
-        <p className="mb-2 font-bold">Recommended Citation:</p>
+        <p className="mb-2 font-bold">Recommended Citation For This Paper:</p>
         <p className="font-mono bg-neutral-100 dark:bg-neutral-800 p-3 rounded text-xs overflow-x-auto whitespace-pre-wrap">
-          Sharma, S. (2026). ABIM AI Bias Checker: A Transformer-Based
-          Classifier for Detecting Bias. ABIM Technical Report.
+          Sharma, S. (2026). ABIM AI Bias Checker: A Scalable Framework for
+          Detecting Bias in Medical Assessments. ABIM Technical Report.
         </p>
       </footer>
     </article>

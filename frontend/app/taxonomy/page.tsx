@@ -4,7 +4,7 @@ import { BookOpen } from "lucide-react";
 const biasTypes = [
   {
     name: "No Bias",
-    color: "bg-green-100 border-green-300 text-green-800",
+    color: "bg-[#8ab598] border-[#8ab598] text-white",
     description:
       "Neutral, patient-centered language without stereotypes or stigmatizing descriptors.",
     examples: [
@@ -16,7 +16,7 @@ const biasTypes = [
   },
   {
     name: "Demographic Bias",
-    color: "bg-red-100 border-red-300 text-red-800",
+    color: "bg-[#d49494] border-[#d49494] text-white",
     description:
       "Stereotypes or assumptions tied to race, ethnicity, nationality, cultural background, or other demographic characteristics.",
     examples: [
@@ -28,7 +28,7 @@ const biasTypes = [
   },
   {
     name: "Clinical Stigma Bias",
-    color: "bg-orange-100 border-orange-300 text-orange-800",
+    color: "bg-[#dcb08a] border-[#dcb08a] text-white",
     description:
       "Stigmatizing language about mental health conditions, obesity, pain management, substance use, or insurance status.",
     examples: [
@@ -40,7 +40,7 @@ const biasTypes = [
   },
   {
     name: "Assessment Bias",
-    color: "bg-purple-100 border-purple-300 text-purple-800",
+    color: "bg-[#b3a5c9] border-[#b3a5c9] text-white",
     description:
       "Biased evaluation framing in clinical assessments or case reviews that lacks objectivity.",
     examples: [
@@ -52,7 +52,7 @@ const biasTypes = [
   },
   {
     name: "Algorithmic Bias",
-    color: "bg-blue-100 border-blue-300 text-blue-800",
+    color: "bg-[#90a4c4] border-[#90a4c4] text-white",
     description:
       "Bias introduced through AI/automated systems, biased scoring logic, or unfair risk stratification.",
     examples: [
@@ -64,7 +64,7 @@ const biasTypes = [
   },
   {
     name: "Documentation Bias",
-    color: "bg-yellow-100 border-yellow-300 text-yellow-800",
+    color: "bg-[#d4c988] border-[#d4c988] text-white",
     description:
       "Biased charting language or unnecessary negative descriptors that go beyond clinically relevant information.",
     examples: [
@@ -76,7 +76,7 @@ const biasTypes = [
   },
   {
     name: "Structural Bias",
-    color: "bg-pink-100 border-pink-300 text-pink-800",
+    color: "bg-[#c994ab] border-[#c994ab] text-white",
     description:
       "Attributes individual blame for systemic barriers, healthcare access inequities, or resource limitations.",
     examples: [
@@ -84,7 +84,7 @@ const biasTypes = [
       "Lack of access to healthy food options in the neighborhood contributes to obesity.",
     ],
     impact:
-      "Obscures systemic solutions by framing structural problems as individual failings.",
+      "Obscures systemic solutions by framing systemic problems as individual failings.",
   },
 ];
 

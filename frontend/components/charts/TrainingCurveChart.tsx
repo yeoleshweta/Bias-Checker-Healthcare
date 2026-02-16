@@ -58,12 +58,12 @@ export default function TrainingCurveChart() {
       >
         <defs>
           <linearGradient id="lossGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#ef4444" />
-            <stop offset="100%" stopColor="#ef4444" stopOpacity={0} />
+            <stop offset="0%" stopColor="#d49494" />
+            <stop offset="100%" stopColor="#d49494" stopOpacity={0} />
           </linearGradient>
           <linearGradient id="accGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#3b82f6" />
-            <stop offset="100%" stopColor="#3b82f6" stopOpacity={0} />
+            <stop offset="0%" stopColor="#90a4c4" />
+            <stop offset="100%" stopColor="#90a4c4" stopOpacity={0} />
           </linearGradient>
         </defs>
 
@@ -103,7 +103,7 @@ export default function TrainingCurveChart() {
         <path
           d={makePath(lossPoints)}
           fill="none"
-          stroke="#ef4444"
+          stroke="#d49494"
           strokeWidth={2.5}
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -116,7 +116,7 @@ export default function TrainingCurveChart() {
         <path
           d={makePath(accPoints)}
           fill="none"
-          stroke="#3b82f6"
+          stroke="#90a4c4"
           strokeWidth={2.5}
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -129,7 +129,7 @@ export default function TrainingCurveChart() {
         <path
           d={makePath(f1Points)}
           fill="none"
-          stroke="#10b981"
+          stroke="#8ab598"
           strokeWidth={2}
           strokeDasharray="6,3"
           strokeLinecap="round"
@@ -143,7 +143,7 @@ export default function TrainingCurveChart() {
               cx={x(d.epoch)}
               cy={yLoss(d.loss)}
               r={4}
-              fill="#ef4444"
+              fill="#d49494"
               style={{
                 opacity: visible ? 1 : 0,
                 transition: `opacity 0.3s ease ${0.3 + i * 0.15}s`,
@@ -153,7 +153,7 @@ export default function TrainingCurveChart() {
               cx={x(d.epoch)}
               cy={yAcc(d.accuracy)}
               r={4}
-              fill="#3b82f6"
+              fill="#90a4c4"
               style={{
                 opacity: visible ? 1 : 0,
                 transition: `opacity 0.3s ease ${0.3 + i * 0.15}s`,
@@ -175,7 +175,7 @@ export default function TrainingCurveChart() {
             width={70}
             height={18}
             rx={4}
-            fill="#3b82f6"
+            fill="#93C5FD"
             fillOpacity={0.15}
           />
           <text
@@ -183,7 +183,7 @@ export default function TrainingCurveChart() {
             y={yAcc(98.67) - 10}
             textAnchor="middle"
             fontSize={9}
-            fill="#3b82f6"
+            fill="#93C5FD"
             fontWeight="bold"
             fontFamily="var(--font-sans)"
           >
@@ -234,7 +234,7 @@ export default function TrainingCurveChart() {
             y={yLoss(v) + 4}
             textAnchor="end"
             fontSize={9}
-            fill="#ef4444"
+            fill="#d49494"
             fillOpacity={0.6}
             fontFamily="var(--font-sans)"
           >
@@ -248,7 +248,7 @@ export default function TrainingCurveChart() {
             y={yAcc(v) + 4}
             textAnchor="start"
             fontSize={9}
-            fill="#3b82f6"
+            fill="#90a4c4"
             fillOpacity={0.6}
             fontFamily="var(--font-sans)"
           >
@@ -263,7 +263,7 @@ export default function TrainingCurveChart() {
             y1={0}
             x2={14}
             y2={0}
-            stroke="#ef4444"
+            stroke="#d49494"
             strokeWidth={2.5}
           />
           <text
@@ -281,7 +281,7 @@ export default function TrainingCurveChart() {
             y1={0}
             x2={99}
             y2={0}
-            stroke="#3b82f6"
+            stroke="#90a4c4"
             strokeWidth={2.5}
           />
           <text
@@ -299,7 +299,7 @@ export default function TrainingCurveChart() {
             y1={0}
             x2={184}
             y2={0}
-            stroke="#10b981"
+            stroke="#8ab598"
             strokeWidth={2}
             strokeDasharray="4,2"
           />

@@ -5,7 +5,7 @@ const categories = [
   {
     name: "No Bias",
     key: "no_bias",
-    color: "#22c55e",
+    color: "#8ab598",
     icon: "✅",
     precision: 96,
     recall: 95,
@@ -19,7 +19,7 @@ const categories = [
   {
     name: "Demographic Bias",
     key: "demographic_bias",
-    color: "#ef4444",
+    color: "#d49494",
     icon: "👥",
     precision: 94,
     recall: 93,
@@ -34,7 +34,7 @@ const categories = [
   {
     name: "Clinical Stigma",
     key: "clinical_stigma_bias",
-    color: "#f97316",
+    color: "#dcb08a",
     icon: "🏥",
     precision: 93,
     recall: 91,
@@ -49,7 +49,7 @@ const categories = [
   {
     name: "Assessment Bias",
     key: "assessment_bias",
-    color: "#a855f7",
+    color: "#b3a5c9",
     icon: "⚖️",
     precision: 92,
     recall: 93,
