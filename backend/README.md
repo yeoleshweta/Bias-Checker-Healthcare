@@ -82,7 +82,7 @@ POST /predict
 Content-Type: application/json
 
 {
-  "text": "The patient declined the procedure after a discussion of risks."
+  "text": "The patient declined the procedure after a discussion of risks"
 }
 ```
 
@@ -90,7 +90,7 @@ Response:
 
 ```json
 {
-  "text": "The patient declined the procedure after a discussion of risks.",
+  "text": "The patient declined the procedure after a discussion of risks",
   "predicted_label": "no_bias",
   "confidence": 0.9876
 }
