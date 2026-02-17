@@ -12,14 +12,14 @@ RUN apt-get update && apt-get install -y \
 RUN pip install --upgrade pip
 
 # Copy requirements and install Python dependencies
-COPY backend/requirements.txt .
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application code
-COPY backend/src/ src/
+COPY src/ src/
 
 # Copy the trained model
-COPY backend/models/ models/
+COPY models/ models/
 
 # Set environment variables
 ENV MODEL_PATH=/app/models/RoBERTa_Optimized

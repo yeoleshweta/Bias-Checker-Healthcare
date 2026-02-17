@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto, Merriweather } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
@@ -34,11 +35,12 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
           <div className="flex flex-col min-h-screen">
+            <ThemeToggle />
             <main className="flex-1 min-h-screen">{children}</main>
           </div>
         </ThemeProvider>
