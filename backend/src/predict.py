@@ -1,5 +1,11 @@
 import torch
 import os
+import certifi
+
+# Ensure Python SSL and requests use certifi's CA bundle (fixes Windows cert issues)
+os.environ.setdefault("SSL_CERT_FILE", certifi.where())
+os.environ.setdefault("REQUESTS_CA_BUNDLE", certifi.where())
+
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from peft import PeftModel
 

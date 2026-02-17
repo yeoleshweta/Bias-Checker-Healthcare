@@ -34,6 +34,10 @@ pip install -r requirements.txt
 
 2. **Set up model path** (create `.env` file):
 
+cd backend
+python -m venv venv
+.\venv\Scripts\activate
+
 ```bash
 cp .env.example .env
 # Edit .env and set MODEL_PATH to your trained model location
