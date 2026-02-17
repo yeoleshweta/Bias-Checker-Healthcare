@@ -28,13 +28,13 @@ Input Text: "{text}"
 Detected Label: {predicted_label}
 Model Confidence: {confidence:.2f}
 
-Please provide a JSON response with the following fields:
+Please provide a json response (note: use the word "json" lowercase) with the following fields:
 1. "rationale": A professional clinical explanation (2-3 sentences) detailing why this text falls under the '{predicted_label}' category (or why it is unbiased if no_bias). Focus on the impact on patient care.
 2. "flags": A list of specific substrings from the input text that are problematic. If 'no_bias', return an empty list.
 3. "recommended_revision": A rewritten version of the text that conveys the same clinical information but removes the bias/stigma. If 'no_bias', return the original text.
 
 Ensure the tone is objective, educational, and constructive.
-Respond ONLY with the JSON object.
+Respond ONLY with the json object (no surrounding text or markdown fences).
 """
 
     try:
