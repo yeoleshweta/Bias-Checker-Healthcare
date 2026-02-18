@@ -149,6 +149,14 @@ def classify_bias_few_shot(text: str, verbose: bool = False) -> dict:
         # Build the prompt
         messages = build_few_shot_prompt(text)
         
+        # Defensive safeguard: ensure at least one message explicitly requests JSON
+        # (some deployment/config issues can cause examples or system prompt to be missing)
+        if isinstance(messages, list) and not any('json' in (m.get('content') or '').lower() for m in messages):
+            messages.insert(0, {
+                "role": "system",
+                "content": "Please respond with ONLY valid JSON that matches the required schema."
+            })
+
         # Call OpenAI API with JSON mode
         response = client.chat.completions.create(
             model=MODEL,
