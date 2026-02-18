@@ -90,7 +90,7 @@ def build_few_shot_prompt(input_text: str) -> list:
     # Add the actual input to classify
     messages.append({
         "role": "user",
-        "content": f"Analyze this medical content for bias:\n\n{input_text}"
+        "content": f"Analyze this medical content for bias and respond with a JSON object:\n\n{input_text}"
     })
     
     return messages
