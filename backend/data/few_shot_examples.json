@@ -135,7 +135,7 @@
   "few_shot_examples": [
     {
       "role": "user",
-      "content": "Analyze this medical content for bias:\n\nThe 45-year-old African American male presented with chest pain. Given his demographic profile, we proceeded with a standard cardiac workup but considered substance abuse screening as a priority given the patient population."
+      "content": "Analyze this medical content for bias and respond with a JSON object:\n\nThe 45-year-old African American male presented with chest pain. Given his demographic profile, we proceeded with a standard cardiac workup but considered substance abuse screening as a priority given the patient population."
     },
     {
       "role": "assistant",
@@ -167,7 +167,7 @@
     },
     {
       "role": "user",
-      "content": "Analyze this medical content for bias:\n\nThe patient with BMI of 38 presented with chronic knee pain. The patient appeared to be exaggerating her pain levels. The physician documented that her pain is primarily a consequence of her weight and poor lifestyle choices. No imaging was ordered."
+      "content": "Analyze this medical content for bias and respond with a JSON object:\n\nThe patient with BMI of 38 presented with chronic knee pain. The patient appeared to be exaggerating her pain levels. The physician documented that her pain is primarily a consequence of her weight and poor lifestyle choices. No imaging was ordered."
     },
     {
       "role": "assistant",
@@ -207,7 +207,7 @@
     },
     {
       "role": "user",
-      "content": "Analyze this medical content for bias:\n\nThe patient, a 58-year-old individual, presented with persistent cough lasting 3 weeks. A comprehensive evaluation was conducted including chest X-ray, CBC, and pulmonary function tests. Differential diagnosis included COPD exacerbation, post-infectious cough, and potential malignancy. Treatment plan developed collaboratively with patient. Follow-up scheduled regardless of initial results."
+      "content": "Analyze this medical content for bias and respond with a JSON object:\n\nThe patient, a 58-year-old individual, presented with persistent cough lasting 3 weeks. A comprehensive evaluation was conducted including chest X-ray, CBC, and pulmonary function tests. Differential diagnosis included COPD exacerbation, post-infectious cough, and potential malignancy. Treatment plan developed collaboratively with patient. Follow-up scheduled regardless of initial results."
     },
     {
       "role": "assistant",
@@ -228,7 +228,7 @@
     },
     {
       "role": "user",
-      "content": "Analyze this medical content for bias:\n\nDr. Harrison, the department chief, diagnosed the patient with fibromyalgia based on the initial presentation. Despite subsequent lab results showing elevated inflammatory markers and positive ANA, the team continued with the fibromyalgia treatment plan as Dr. Harrison felt confident in the original assessment."
+      "content": "Analyze this medical content for bias and respond with a JSON object:\n\nDr. Harrison, the department chief, diagnosed the patient with fibromyalgia based on the initial presentation. Despite subsequent lab results showing elevated inflammatory markers and positive ANA, the team continued with the fibromyalgia treatment plan as Dr. Harrison felt confident in the original assessment."
     },
     {
       "role": "assistant",
@@ -268,7 +268,7 @@
     },
     {
       "role": "user",
-      "content": "Analyze this medical content for bias:\n\nThe elderly patient was confused and combative during examination. Given her age and mental state, we assumed early dementia and recommended nursing home placement. No further cognitive testing was deemed necessary."
+      "content": "Analyze this medical content for bias and respond with a JSON object:\n\nThe elderly patient was confused and combative during examination. Given her age and mental state, we assumed early dementia and recommended nursing home placement. No further cognitive testing was deemed necessary."
     },
     {
       "role": "assistant",
